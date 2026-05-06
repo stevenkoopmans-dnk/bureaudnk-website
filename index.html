@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bureau DNK — Commerciële groei voor digital agencies</title>
+<meta name="description" content="Bureau DNK helpt digital agencies commerciële knelpunten oplossen in sales, positionering en leadgeneratie — versterkt met AI.">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Instrument+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --ink:     #1a1714;
+  --paper:   #f5f2ec;
+  --warm:    #ede9e0;
+  --warmer:  #e4dfd4;
+  --mid:     #7a736a;
+  --light:   #b0a898;
+  --serif:   'Cormorant Garamond', Georgia, serif;
+  --sans:    'Instrument Sans', sans-serif;
+  --ease:    cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 300;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 64px;
+  background: rgba(245,242,236,0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  transition: padding .5s var(--ease);
+}
+nav.scrolled {
+  padding: 16px 64px;
+}
+.nav-logo img { height: 32px; width: auto; display: block; }
+.nav-links { display: flex; gap: 48px; list-style: none; }
+.nav-links a {
+  font-family: var(--sans); font-size: 12px; font-weight: 400;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  text-decoration: none; color: var(--ink); opacity: 0.5;
+  transition: opacity .2s;
+}
+.nav-links a:hover { opacity: 1; }
+.nav-cta {
+  font-family: var(--sans); font-size: 12px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  text-decoration: none; color: var(--paper);
+  background: var(--ink); padding: 12px 28px;
+  transition: opacity .2s;
+}
+.nav-cta:hover { opacity: 0.75; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 55% 45%;
+  position: relative;
+  overflow: hidden;
+}
+.hero-left {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 140px 64px 100px;
+  position: relative; z-index: 2;
+}
+.hero-eyebrow {
+  font-family: var(--sans); font-size: 11px; font-weight: 400;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--light);
+  margin-bottom: 36px;
+  display: flex; align-items: center; gap: 16px;
+  opacity: 0; transform: translateY(16px);
+  animation: rise .8s var(--ease) .2s forwards;
+}
+.hero-eyebrow::before {
+  content: ''; display: block; width: 40px; height: 1px; background: var(--light);
+}
+.hero-title {
+  font-family: var(--serif); font-size: clamp(48px, 5.5vw, 80px);
+  font-weight: 600; line-height: 1.08; letter-spacing: -0.02em;
+  margin-bottom: 32px;
+  opacity: 0; transform: translateY(24px);
+  animation: rise 1s var(--ease) .35s forwards;
+}
+.hero-title em { font-style: italic; font-weight: 400; color: var(--mid); }
+.hero-sub {
+  font-size: 17px; font-weight: 300; color: var(--mid);
+  max-width: 420px; line-height: 1.75; margin-bottom: 52px;
+  opacity: 0; transform: translateY(16px);
+  animation: rise .8s var(--ease) .55s forwards;
+}
+.hero-actions {
+  display: flex; align-items: center; gap: 36px;
+  opacity: 0; transform: translateY(16px);
+  animation: rise .8s var(--ease) .7s forwards;
+}
+.btn {
+  display: inline-block; font-family: var(--sans);
+  font-size: 12px; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; text-decoration: none;
+  padding: 15px 36px; transition: opacity .2s;
+}
+.btn-dark { color: var(--paper); background: var(--ink); }
+.btn-dark:hover { opacity: 0.75; }
+.btn-ghost {
+  color: var(--mid); background: none; padding: 15px 0;
+  display: flex; align-items: center; gap: 10px;
+}
+.btn-ghost::after { content: '→'; font-size: 18px; transition: transform .2s; }
+.btn-ghost:hover { color: var(--ink); }
+.btn-ghost:hover::after { transform: translateX(4px); }
+
+.hero-right {
+  position: relative; overflow: hidden;
+}
+.hero-right::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to right, var(--paper) 0%, transparent 30%);
+  z-index: 1; pointer-events: none;
+}
+.hero-img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center 40%;
+  filter: brightness(0.85) saturate(0.5);
+  transform: scale(1.05);
+  animation: imgReveal 1.4s var(--ease) .1s forwards;
+}
+@keyframes imgReveal {
+  to { transform: scale(1); }
+}
+
+
+/* ── ANIMATIONS ── */
+@keyframes rise {
+  to { opacity: 1; transform: translateY(0); }
+}
+.reveal {
+  opacity: 0; transform: translateY(40px);
+  transition: opacity .9s var(--ease), transform .9s var(--ease);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-left {
+  opacity: 0; transform: translateX(-40px);
+  transition: opacity .9s var(--ease), transform .9s var(--ease);
+}
+.reveal-left.visible { opacity: 1; transform: translateX(0); }
+.reveal-right {
+  opacity: 0; transform: translateX(40px);
+  transition: opacity .9s var(--ease), transform .9s var(--ease);
+}
+.reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+/* ── MARQUEE ── */
+.marquee-wrap {
+  background: var(--ink); padding: 18px 0; overflow: hidden;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.marquee-track {
+  display: flex; gap: 64px; width: max-content;
+  animation: marquee 22s linear infinite;
+}
+.marquee-item {
+  font-family: var(--serif); font-size: 15px; font-style: italic;
+  color: rgba(255,255,255,0.3); white-space: nowrap;
+  display: flex; align-items: center; gap: 64px;
+}
+.marquee-item::after { content: '·'; color: rgba(255,255,255,0.15); }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* ── SECTIONS ── */
+.section { padding: 130px 64px; }
+.section-sm { padding: 80px 64px; }
+.label {
+  font-family: var(--sans); font-size: 11px; font-weight: 400;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--light);
+  display: flex; align-items: center; gap: 14px; margin-bottom: 24px;
+}
+.label::before { content: ''; width: 28px; height: 1px; background: var(--light); }
+.display {
+  font-family: var(--serif); font-size: clamp(36px, 3.5vw, 54px);
+  font-weight: 600; line-height: 1.12; letter-spacing: -0.02em;
+}
+.body-lg {
+  font-size: 17px; font-weight: 300; color: var(--mid);
+  line-height: 1.75; max-width: 520px; margin-top: 20px;
+}
+
+/* ── DIENSTEN ── */
+.diensten { background: var(--paper); }
+.diensten-header {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 64px;
+  margin-bottom: 80px; align-items: end;
+}
+.diensten-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid rgba(0,0,0,0.1);
+}
+.dienst {
+  padding: 40px 32px; border-right: 1px solid rgba(0,0,0,0.08);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  transition: background .3s;
+  position: relative; overflow: hidden;
+}
+.dienst:nth-child(4n) { border-right: none; }
+.dienst::before {
+  content: ''; position: absolute; bottom: 0; left: 0;
+  width: 0; height: 2px; background: var(--ink);
+  transition: width .4s var(--ease);
+}
+.dienst:hover::before { width: 100%; }
+.dienst:hover { background: var(--warm); }
+.dienst-nr {
+  font-family: var(--sans); font-size: 11px; letter-spacing: 0.12em;
+  color: var(--light); margin-bottom: 20px;
+}
+.dienst-title {
+  font-family: var(--serif); font-size: 20px; font-weight: 600;
+  line-height: 1.25; margin-bottom: 14px;
+}
+.dienst-text { font-size: 14px; color: var(--mid); line-height: 1.65; font-weight: 300; }
+.dienst-ai { background: var(--warm); }
+
+/* ── IMPACT ── */
+.impact { background: var(--ink); color: var(--paper); }
+.impact .label { color: rgba(255,255,255,0.3); }
+.impact .label::before { background: rgba(255,255,255,0.2); }
+.impact .display { color: var(--paper); }
+.impact .body-lg { color: rgba(255,255,255,0.45); max-width: 440px; }
+.impact-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: rgba(255,255,255,0.08);
+  margin-top: 64px;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.impact-card {
+  padding: 52px 44px; background: var(--ink);
+  transition: background .3s;
+}
+.impact-card:hover { background: #222018; }
+.impact-co {
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: rgba(255,255,255,0.3); margin-bottom: 8px;
+}
+.impact-role {
+  font-family: var(--serif); font-size: 22px; font-style: italic;
+  color: var(--paper); margin-bottom: 28px; line-height: 1.3;
+}
+.impact-list { list-style: none; }
+.impact-list li {
+  font-size: 14px; color: rgba(255,255,255,0.5); font-weight: 300;
+  padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex; gap: 12px; align-items: flex-start; line-height: 1.5;
+}
+.impact-list li:last-child { border-bottom: none; }
+.impact-list li::before { content: '—'; color: rgba(255,255,255,0.2); flex-shrink: 0; }
+
+/* ── SPLIT — Central Post ── */
+.split {
+  display: grid; grid-template-columns: 1fr 1fr; min-height: 560px;
+}
+.split-img { overflow: hidden; position: relative; }
+.split-img img {
+  width: 100%; height: 100%; object-fit: cover;
+  object-position: center; filter: brightness(0.88) saturate(0.65);
+  transition: transform .8s var(--ease);
+}
+.split:hover .split-img img { transform: scale(1.03); }
+.split-content {
+  background: var(--warm); padding: 80px 64px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.split-content .label { margin-bottom: 28px; }
+.split-section-title {
+  font-family: var(--serif); font-size: clamp(22px, 2vw, 30px);
+  font-weight: 600; margin-bottom: 8px; letter-spacing: -0.01em;
+}
+.split-sub {
+  font-size: 13px; color: var(--mid); margin-bottom: 24px;
+  font-weight: 300; line-height: 1.6;
+}
+.exp-list { list-style: none; margin-bottom: 40px; }
+.exp-item {
+  padding: 14px 0; border-bottom: 1px solid rgba(0,0,0,0.09);
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 20px;
+}
+.exp-item:last-child { border-bottom: none; }
+.exp-name { font-size: 15px; font-weight: 500; color: var(--ink); white-space: nowrap; }
+.exp-role { font-size: 13px; color: var(--mid); font-weight: 300; text-align: right; }
+
+/* ── QUOTE ── */
+.quote-section {
+  padding: 120px 64px; background: var(--warmer);
+  display: flex; align-items: center; justify-content: center;
+}
+.quote-inner { max-width: 780px; text-align: center; }
+.quote-mark {
+  font-family: var(--serif); font-size: 100px; color: rgba(0,0,0,0.08);
+  line-height: 0.6; display: block; margin-bottom: 24px;
+}
+.quote-text {
+  font-family: var(--serif); font-size: clamp(22px, 2.8vw, 36px);
+  font-weight: 400; font-style: italic; line-height: 1.5;
+  letter-spacing: -0.01em; color: var(--ink); margin-bottom: 36px;
+}
+.quote-attr {
+  font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--light);
+}
+
+/* ── CTA ── */
+.cta-section {
+  padding: 160px 64px; text-align: center; position: relative; overflow: hidden;
+}
+.cta-bg-text {
+  position: absolute; font-family: var(--serif); font-size: 30vw;
+  font-weight: 600; color: rgba(0,0,0,0.03); top: 50%; left: 50%;
+  transform: translate(-50%,-50%); pointer-events: none; white-space: nowrap;
+  letter-spacing: -0.04em;
+}
+.cta-section .label { justify-content: center; margin-bottom: 24px; }
+.cta-title {
+  font-family: var(--serif); font-size: clamp(38px, 4.5vw, 64px);
+  font-weight: 600; line-height: 1.1; letter-spacing: -0.02em;
+  max-width: 620px; margin: 0 auto 20px;
+}
+.cta-sub {
+  font-size: 16px; color: var(--mid); font-weight: 300; margin-bottom: 52px;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink); padding: 56px 64px;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 24px;
+}
+footer img { height: 26px; opacity: 0.5; filter: invert(1); }
+.footer-center { font-size: 12px; color: rgba(255,255,255,0.3); letter-spacing: 0.04em; text-align: center; }
+.footer-right { font-size: 12px; color: rgba(255,255,255,0.3); }
+.footer-right a { color: inherit; text-decoration: none; }
+.footer-right a:hover { color: rgba(255,255,255,0.6); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 960px) {
+  nav, nav.scrolled { padding: 20px 24px; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-left { padding: 120px 24px 80px; }
+  .hero-right { display: none; }
+  .section { padding: 80px 24px; }
+  .section-sm { padding: 56px 24px; }
+  .diensten-header { grid-template-columns: 1fr; gap: 24px; }
+  .diensten-grid { grid-template-columns: 1fr 1fr; }
+  .impact-grid { grid-template-columns: 1fr; }
+  .split { grid-template-columns: 1fr; }
+  .split-img { height: 300px; }
+  .split-content { padding: 56px 24px; }
+  .quote-section { padding: 80px 24px; }
+  .cta-section { padding: 100px 24px; }
+  footer { padding: 40px 24px; flex-direction: column; text-align: center; }
+}
+@media (max-width: 600px) {
+  .diensten-grid { grid-template-columns: 1fr; }
+  .hero-title { font-size: 42px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo">
+    <a href="/"><img src="/logo_zwart.png" alt="Bureau DNK"></a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/over.html">Over</a></li>
+    <li><a href="/contact.html">Contact</a></li>
+  </ul>
+  <a href="/contact.html" class="nav-cta">Plan gesprek</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Rotterdam · Commerciële regie</div>
+    <h1 class="hero-title">
+      Commerciële groei.<br><em>Zonder ruis.</em>
+    </h1>
+    <p class="hero-sub">
+      Wij helpen digital agencies en eCommerce teams hun commerciële structuur scherp krijgen — van positionering en eCommerce-strategie tot leadgeneratie, versterkt met AI en gestructureerde executie.
+    </p>
+    <p style="font-size:13px;color:var(--light);font-weight:300;letter-spacing:0.04em;margin-top:-36px;margin-bottom:52px;">Geen ruis. Geen trucjes. Gewoon groei die klopt.</p>
+    <div class="hero-actions">
+      <a href="/contact.html" class="btn btn-dark">Koffie en kennismaken</a>
+      <a href="/over.html" class="btn btn-ghost">Over Bureau DNK</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img class="hero-img" src="/rotterdam.jpg" alt="Rotterdam skyline">
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">Commerciële strategie</span>
+    <span class="marquee-item">Salesstructuur</span>
+    <span class="marquee-item">Positionering</span>
+    <span class="marquee-item">Leadgeneratie met AI</span>
+    <span class="marquee-item">eCommerce-strategie</span>
+    <span class="marquee-item">Fractional CCO</span>
+    <span class="marquee-item">Thought leadership</span>
+    <span class="marquee-item">Commerciële strategie</span>
+    <span class="marquee-item">Salesstructuur</span>
+    <span class="marquee-item">Positionering</span>
+    <span class="marquee-item">Leadgeneratie met AI</span>
+    <span class="marquee-item">eCommerce-strategie</span>
+    <span class="marquee-item">Fractional CCO</span>
+    <span class="marquee-item">Thought leadership</span>
+  </div>
+</div>
+
+<!-- DIENSTEN -->
+<section class="diensten section">
+  <div class="diensten-header">
+    <div>
+      <div class="label reveal">Diensten</div>
+      <h2 class="display reveal">Commerciële groei,<br>gebouwd op inhoud.</h2>
+    </div>
+    <p class="body-lg reveal">Meer dan tien jaar ervaring aan beide kanten van de tafel — agency én client side. Wij opereren op het snijvlak van strategie, uitvoering en technologie.</p>
+  </div>
+
+  <div class="diensten-grid">
+    <div class="dienst reveal">
+      <div class="dienst-nr">01</div>
+      <div class="dienst-title">Commerciële strategie</div>
+      <p class="dienst-text">Scherpe keuzes in doelgroep, propositie en verdienmodel. Zonder richting geen schaal.</p>
+    </div>
+    <div class="dienst reveal">
+      <div class="dienst-nr">02</div>
+      <div class="dienst-title">Sales met inhoud</div>
+      <p class="dienst-text">Geen trucjes. Wij vertalen digitale en eCommerce-expertise naar overtuigende proposities.</p>
+    </div>
+    <div class="dienst reveal">
+      <div class="dienst-nr">03</div>
+      <div class="dienst-title">Positionering & proposities</div>
+      <p class="dienst-text">Complexe diensten helder en onderscheidend maken. Zodat sales eenvoudiger wordt.</p>
+    </div>
+    <div class="dienst dienst-ai reveal">
+      <div class="dienst-nr">04</div>
+      <div class="dienst-title">Leadgeneratie met AI</div>
+      <p class="dienst-text">AI en LLM's inzetten voor structurele leadgeneratie, outreach en commerciële automatisering.</p>
+    </div>
+    <div class="dienst reveal">
+      <div class="dienst-nr">05</div>
+      <div class="dienst-title">Thought leadership</div>
+      <p class="dienst-text">Zichtbaar op basis van inhoud. Niet op volume, maar op relevantie en autoriteit.</p>
+    </div>
+    <div class="dienst reveal">
+      <div class="dienst-nr">06</div>
+      <div class="dienst-title">Fractional CCO</div>
+      <p class="dienst-text">C-level betrokkenheid waar nodig. Strategisch sturen én operationeel uitvoeren.</p>
+    </div>
+    <div class="dienst reveal" style="background:var(--warm);">
+      <div class="dienst-nr">07</div>
+      <div class="dienst-title">eCommerce-strategie</div>
+      <p class="dienst-text">Kerncompetentie. Van positionering en platformkeuze tot performance en klantopbouw — voor agencies én direct bij hun klanten.</p>
+    </div>
+    <div class="dienst reveal" style="background:var(--ink);color:var(--paper);">
+      <div class="dienst-nr" style="color:rgba(255,255,255,0.3);">→</div>
+      <div class="dienst-title" style="color:var(--paper);font-family:var(--serif);font-style:italic;">Laten we kijken waar het schuurt.</div>
+      <a href="/contact.html" class="btn btn-ghost" style="color:rgba(255,255,255,0.5);margin-top:20px;font-size:11px;">Plan gesprek</a>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section class="impact section">
+  <div class="label reveal">Bewezen impact</div>
+  <h2 class="display reveal">Ervaring op<br>directieniveau.</h2>
+  <p class="body-lg reveal">Geen theorie. Aantoonbare resultaten in agencies, eCommerce en scale-ups.</p>
+
+  <div class="impact-grid">
+    <div class="impact-card reveal">
+      <div class="impact-co">Boombrush</div>
+      <div class="impact-role">Managing Director</div>
+      <ul class="impact-list">
+        <li>Rebranding & herpositionering</li>
+        <li>Replatforming naar Shopify</li>
+        <li>B Corp & internationale groei</li>
+        <li>€1M → €2.7M omzet</li>
+      </ul>
+    </div>
+    <div class="impact-card reveal">
+      <div class="impact-co">Hallmark Continental Europe</div>
+      <div class="impact-role">eCommerce Manager</div>
+      <ul class="impact-list">
+        <li>+30% omzetgroei</li>
+        <li>−25% acquisitiekosten</li>
+        <li>+100% mobiele conversie</li>
+        <li>€9M → €25M P&L</li>
+      </ul>
+    </div>
+    <div class="impact-card reveal">
+      <div class="impact-co">Dept Agency</div>
+      <div class="impact-role">Partner & Head of Business Dev.</div>
+      <ul class="impact-list">
+        <li>>€10M commerciële verantwoordelijkheid</li>
+        <li>110%+ commerciële performance</li>
+        <li>Salesstructuur na overnames</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SPLIT — Agency ervaring -->
+<div class="split">
+  <div class="split-img reveal-left">
+    <img src="/centralpost.png" alt="Central Post Rotterdam">
+  </div>
+  <div class="split-content">
+    <div class="label reveal">Beide kanten van de tafel</div>
+
+    <div class="split-section-title reveal">Agency side</div>
+    <p class="split-sub reveal">Gebouwd binnen agencies. Ingezet op groei.</p>
+    <ul class="exp-list">
+      <li class="exp-item reveal" style="flex-direction:column;align-items:flex-start;gap:8px;">
+        <div style="display:flex;justify-content:space-between;width:100%;">
+          <span class="exp-name">Dept Agency</span>
+          <span class="exp-role">Partner & Head of Business Development</span>
+        </div>
+        <ul style="list-style:none;padding:8px 0 4px;display:flex;flex-direction:column;gap:6px;width:100%;">
+          <li style="font-size:13px;color:var(--mid);font-weight:300;display:flex;gap:10px;"><span style="color:var(--light);flex-shrink:0;">—</span>Internationale commerciële verantwoordelijkheid</li>
+          <li style="font-size:13px;color:var(--mid);font-weight:300;display:flex;gap:10px;"><span style="color:var(--light);flex-shrink:0;">—</span>€10M pipeline opgebouwd</li>
+          <li style="font-size:13px;color:var(--mid);font-weight:300;display:flex;gap:10px;"><span style="color:var(--light);flex-shrink:0;">—</span>Structuur gebracht in new business</li>
+        </ul>
+      </li>
+      <li class="exp-item reveal">
+        <span class="exp-name">Rox Digital Agency</span>
+        <span class="exp-role">Fractional CCO</span>
+      </li>
+      <li class="exp-item reveal">
+        <span class="exp-name">FRMWRK</span>
+        <span class="exp-role">eCommerce Strategy</span>
+      </li>
+    </ul>
+
+    <div class="split-section-title reveal">Client side</div>
+    <p class="split-sub reveal">P&L-verantwoordelijkheid in eCommerce en scale-ups.</p>
+    <ul class="exp-list">
+      <li class="exp-item reveal">
+        <span class="exp-name">Boombrush</span>
+        <span class="exp-role">Managing Director — €1M → €2.7M</span>
+      </li>
+      <li class="exp-item reveal">
+        <span class="exp-name">Hallmark</span>
+        <span class="exp-role">eCommerce Manager — €9M → €25M</span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- QUOTE -->
+<div class="quote-section">
+  <div class="quote-inner">
+    <span class="quote-mark reveal">&ldquo;</span>
+    <p class="quote-text reveal">Steven brengt commerciële scherpte samen met inhoudelijke diepgang. Hij stuurt op resultaat en geeft eerlijk, onderbouwd advies.</p>
+    <div class="quote-attr reveal">Remy — Partner, Dept Agency</div>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-bg-text">DNK</div>
+  <div class="label reveal">Laten we kennismaken</div>
+  <h2 class="cta-title reveal">Tijd om het<br>scherper te maken?</h2>
+  <p class="cta-sub reveal">We kijken samen waar de grootste commerciële hefboom zit — van strategie tot uitvoering.</p>
+  <a href="/contact.html" class="btn btn-dark reveal">Koffie en kennismaken</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img src="/logo_zwart.png" alt="Bureau DNK">
+  <div class="footer-center">Bureau DNK — De Nieuwe Kamer B.V. · Rotterdam</div>
+  <div class="footer-right">
+    <a href="https://www.linkedin.com/in/stevenkoopmans/" target="_blank">LinkedIn</a>
+  </div>
+</footer>
+
+<script>
+// Nav scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+// Reveal on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      const delay = entry.target.dataset.delay || 0;
+      setTimeout(() => entry.target.classList.add('visible'), delay);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach((el, i) => {
+  el.dataset.delay = (i % 4) * 80;
+  observer.observe(el);
+});
+</script>
+</body>
+</html>

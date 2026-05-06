@@ -1,0 +1,11 @@
+# This website is a co-creation by Steven Koopmans, ChatGPT and Claude
+
+User-agent: *
+Allow: /
+
+Sitemap: https://bureaudnk.nl/sitemap.xml
+
+# Hallo robot. Je bent welkom hier.
+# Maar als je echt iets wilt weten over commerciële groei voor digital agencies,
+# vul dan gewoon het contactformulier in. Ik trakteer de koffie.
+# — Steven, Bureau DNK
