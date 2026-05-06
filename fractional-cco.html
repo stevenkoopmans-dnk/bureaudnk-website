@@ -63,11 +63,56 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .voor-wie-title { font-family: var(--serif); font-size: 20px; font-weight: 400; margin-bottom: 10px; }
 .voor-wie-text { font-size: 14px; font-weight: 300; color: var(--mid); line-height: 1.65; }
 
+.werkwijze {
+  padding: 100px 64px;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+.werkwijze-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  margin-bottom: 64px;
+}
+.werkwijze-header h2 {
+  font-family: var(--serif); font-size: clamp(32px, 3vw, 44px);
+  font-weight: 400; line-height: 1.2; letter-spacing: -0.01em;
+}
+.werkwijze-header p {
+  font-size: 16px; font-weight: 300; color: var(--mid);
+  line-height: 1.85; align-self: end;
+}
+.werkwijze-stappen {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: rgba(0,0,0,0.08);
+}
+.stap {
+  padding: 48px 40px;
+  background: var(--paper);
+  position: relative;
+}
+.stap-nr {
+  font-size: 48px; font-family: var(--serif); font-weight: 400;
+  color: rgba(0,0,0,0.06); line-height: 1;
+  margin-bottom: 24px; letter-spacing: -0.02em;
+}
+.stap-title {
+  font-family: var(--serif); font-size: 22px; font-weight: 400;
+  margin-bottom: 14px; letter-spacing: -0.01em;
+}
+.stap-text {
+  font-size: 14px; font-weight: 300; color: var(--mid); line-height: 1.75;
+}
+
 @media (max-width: 960px) {
   .dienst-body { grid-template-columns: 1fr; gap: 48px; padding: 60px 24px 80px; }
   .dienst-meta { position: static; }
   .voor-wie { padding: 80px 24px; }
   .voor-wie-grid { grid-template-columns: 1fr; }
+  .werkwijze { padding: 80px 24px; }
+  .werkwijze-header { grid-template-columns: 1fr; gap: 24px; }
+  .werkwijze-stappen { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -107,10 +152,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p class="reveal"><strong>Als fractional CCO</strong> stuur ik het commerciële proces aan: propositie, pipeline, team en klantrelaties. Ik neem waar de regie op dit vlak ontbreekt of versnipperd is.</p>
     <p class="reveal"><strong>Als fractional eCommerce Manager</strong> neem ik eigenaarschap over het online kanaal: strategie, kanaalmix, campagnes, conversie en operations. Van platformkeuze tot maandelijkse resultaten.</p>
 
-    <h3 class="reveal">Hoe ik werk</h3>
-    <p class="reveal">De eerste twee weken gebruik ik om te begrijpen wat er speelt: ik praat met je team, kijk naar de cijfers en stel de juiste vragen. Daarna stel ik een prioriteitenlijst op, geen dik plan maar een korte, concrete agenda.</p>
-    <p class="reveal">Vervolgens werk ik embedded. Vaste dag of dagen per week, aanwezig in de Slack, bij de relevante overleggen en als sparringpartner voor de founder. <strong>Ik breng structuur zonder bureaucratie.</strong></p>
-
     <h3 class="reveal">Wat je krijgt</h3>
     <p class="reveal">Een commercieel of eCommerce-traject dat loopt. Geen stapel aanbevelingen die je zelf nog moet uitvoeren, maar zichtbare vooruitgang: een pipeline die gevuld wordt, conversies die stijgen, een team dat weet waar het aan werkt.</p>
     <p class="reveal">En aan het einde van de samenwerking: een structuur die je kunt voortzetten, ook zonder mij.</p>
@@ -129,6 +170,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="/contact.html" class="btn btn-dark" style="margin-top: 16px;">Plan gesprek</a>
   </div>
 </div>
+
+<!-- HOE IK WERK -->
+<section class="werkwijze">
+  <div class="werkwijze-header">
+    <h2 class="reveal">Hoe ik werk</h2>
+    <p class="reveal">Geen grote projectkick-off, geen onboarding van drie weken. Ik kom erin, begrijp wat er speelt en begin te werken.</p>
+  </div>
+  <div class="werkwijze-stappen">
+    <div class="stap reveal">
+      <div class="stap-nr">01</div>
+      <div class="stap-title">Intake</div>
+      <p class="stap-text">De eerste twee weken praat ik met je team, kijk ik naar de cijfers en stel de juiste vragen. Geen audit, geen rapport. Begrijpen wat er echt speelt.</p>
+    </div>
+    <div class="stap reveal">
+      <div class="stap-nr">02</div>
+      <div class="stap-title">Prioriteiten</div>
+      <p class="stap-text">Op basis van de intake stel ik een korte, concrete agenda op. Wat pakken we als eerste aan, wat laten we nog even liggen. Helder en zonder omwegen.</p>
+    </div>
+    <div class="stap reveal">
+      <div class="stap-nr">03</div>
+      <div class="stap-title">Embedded uitvoeren</div>
+      <p class="stap-text">Vaste dag of dagen per week, in de Slack, bij de overleggen die tellen. Ik breng structuur zonder bureaucratie en stuur bij waar nodig.</p>
+    </div>
+  </div>
+</section>
 
 <!-- VOOR WIE -->
 <section class="voor-wie">
