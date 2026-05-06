@@ -96,6 +96,7 @@ nav.scrolled {
   margin-bottom: 32px;
   opacity: 0; transform: translateY(24px);
   animation: rise 1s var(--ease) .35s forwards;
+  will-change: transform;
 }
 .hero-title em { font-style: italic; font-weight: 400; color: var(--mid); }
 .hero-sub {
@@ -134,11 +135,11 @@ nav.scrolled {
   z-index: 1; pointer-events: none;
 }
 .hero-img {
-  width: 100%; height: 100%;
+  width: 100%; height: 115%;
   object-fit: cover; object-position: center 40%;
   filter: brightness(0.85) saturate(0.5);
   transform: scale(1.05);
-  animation: imgReveal 1.4s var(--ease) .1s forwards;
+  will-change: transform;
 }
 @keyframes imgReveal {
   to { transform: scale(1); }
@@ -619,6 +620,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+// Parallax
+const heroImg   = document.querySelector('.hero-img');
+const heroLeft  = document.querySelector('.hero-left');
+const heroH     = document.querySelector('.hero').offsetHeight;
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  if (y > heroH) return;
+  if (heroImg)  heroImg.style.transform  = `scale(1.05) translateY(${y * 0.18}px)`;
+  if (heroLeft) heroLeft.style.transform = `translateY(${y * 0.06}px)`;
 }, { passive: true });
 
 // Reveal on scroll
