@@ -459,45 +459,45 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <div class="diensten-grid">
-    <div class="dienst reveal">
+    <div class="dienst reveal" data-delay="0">
       <div class="dienst-nr">01</div>
       <div class="dienst-title">Commerciële strategie</div>
       <p class="dienst-text">Scherpe keuzes in doelgroep, propositie en verdienmodel. Zonder richting geen schaal.</p>
     </div>
-    <div class="dienst reveal">
+    <div class="dienst reveal" data-delay="120">
       <div class="dienst-nr">02</div>
       <div class="dienst-title">Sales met inhoud</div>
       <p class="dienst-text">Geen trucjes. Wij vertalen digitale en eCommerce-expertise naar overtuigende proposities.</p>
     </div>
-    <div class="dienst reveal">
+    <div class="dienst reveal" data-delay="240">
       <div class="dienst-nr">03</div>
       <div class="dienst-title">Positionering & proposities</div>
       <p class="dienst-text">Complexe diensten helder en onderscheidend maken. Zodat sales eenvoudiger wordt.</p>
     </div>
-    <div class="dienst dienst-ai reveal">
+    <div class="dienst dienst-ai reveal" data-delay="360">
       <div class="dienst-nr">04</div>
       <div class="dienst-title">Leadgeneratie met AI</div>
       <p class="dienst-text">AI en LLM's inzetten voor structurele leadgeneratie, outreach en commerciële automatisering.</p>
     </div>
-    <div class="dienst reveal">
+    <div class="dienst reveal" data-delay="80">
       <div class="dienst-nr">05</div>
       <div class="dienst-title">Thought leadership</div>
       <p class="dienst-text">Zichtbaar op basis van inhoud. Niet op volume, maar op relevantie en autoriteit.</p>
     </div>
-    <div class="dienst reveal">
+    <div class="dienst reveal" data-delay="200">
       <div class="dienst-nr">06</div>
       <div class="dienst-title">Fractional CCO</div>
       <p class="dienst-text">C-level betrokkenheid waar nodig. Strategisch sturen én operationeel uitvoeren.</p>
     </div>
-    <div class="dienst reveal" style="background:var(--warm);">
+    <div class="dienst reveal" data-delay="320" style="background:var(--warm);">
       <div class="dienst-nr">07</div>
       <div class="dienst-title">eCommerce-strategie</div>
-      <p class="dienst-text">Kerncompetentie. Van positionering en platformkeuze tot performance en klantopbouw — voor agencies én direct bij hun klanten.</p>
+      <p class="dienst-text">Kerncompetentie. Van positionering en platformkeuze tot performance en klantopbouw, voor agencies én direct bij hun klanten.</p>
     </div>
-    <div class="dienst reveal" style="background:var(--ink);color:var(--paper);">
-      <div class="dienst-nr" style="color:rgba(255,255,255,0.3);">→</div>
-      <div class="dienst-title" style="color:var(--paper);font-family:var(--serif);font-style:italic;">Laten we kijken waar het schuurt.</div>
-      <a href="/contact.html" class="btn btn-ghost" style="color:rgba(255,255,255,0.5);margin-top:20px;font-size:11px;">Plan gesprek</a>
+    <div class="dienst reveal" data-delay="440">
+      <div class="dienst-nr" style="color:var(--light);">→</div>
+      <div class="dienst-title" style="font-family:var(--serif);font-style:italic;">Laten we kijken waar het schuurt.</div>
+      <a href="/contact.html" class="btn btn-dark" style="margin-top:24px;display:inline-block;">Plan gesprek</a>
     </div>
   </div>
 </section>
@@ -645,7 +645,7 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
 document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach((el, i) => {
-  el.dataset.delay = (i % 4) * 80;
+  if (!el.dataset.delay) el.dataset.delay = (i % 4) * 80;
   observer.observe(el);
 });
 </script>
