@@ -41,27 +41,43 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .voorwaarden-body p strong { font-weight: 500; color: var(--ink); }
 .voorwaarden-body a { color: var(--ink); }
 .voorwaarden-body a:hover { opacity: 0.6; }
-.voorwaarden-body ul {
+.voorwaarden-body ol {
   list-style: none;
   padding: 0;
   margin-bottom: 16px;
+  counter-reset: artikel-item;
 }
-.voorwaarden-body ul li {
+.voorwaarden-body ol > li {
   font-size: 16px;
   font-weight: 300;
   color: var(--mid);
   line-height: 1.85;
-  padding-left: 20px;
+  padding-left: 28px;
   position: relative;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
+  counter-increment: artikel-item;
 }
-.voorwaarden-body ul li::before {
-  content: '—';
+.voorwaarden-body ol > li::before {
+  content: counter(artikel-item) ".";
   position: absolute;
   left: 0;
   color: var(--light);
-  font-size: 12px;
-  top: 5px;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  top: 3px;
+}
+.voorwaarden-body ol.sub-alpha {
+  counter-reset: sub-item;
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+.voorwaarden-body ol.sub-alpha > li {
+  counter-increment: sub-item;
+  padding-left: 24px;
+  margin-bottom: 4px;
+}
+.voorwaarden-body ol.sub-alpha > li::before {
+  content: counter(sub-item, lower-alpha) ".";
 }
 .voorwaarden-meta {
   background: var(--warm);
@@ -80,6 +96,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   text-transform: uppercase;
   color: var(--light);
   margin-bottom: 6px;
+}
+.definitie-term {
+  font-weight: 500;
+  color: var(--ink);
 }
 .voorwaarden-updated {
   font-size: 13px;
@@ -121,54 +141,173 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="mailto:steven@bureaudnk.nl">steven@bureaudnk.nl</a>
   </div>
 
+  <p class="reveal">Deze algemene voorwaarden zijn van toepassing op alle aanbiedingen, offertes, werkzaamheden, overeenkomsten en leveringen van diensten door Bureau DNK (De Nieuwe Kamer B.V.), gevestigd te Rotterdam en ingeschreven bij de Kamer van Koophandel onder nummer 99184761, hierna te noemen: "opdrachtnemer".</p>
+
   <div class="artikel-nr reveal">Artikel 1</div>
-  <h2 class="reveal">Toepasselijkheid</h2>
-  <p class="reveal">Deze algemene voorwaarden zijn van toepassing op alle offertes, overeenkomsten en werkzaamheden van De Nieuwe Kamer B.V., handelend onder de naam Bureau DNK, gevestigd te Rotterdam (KVK 99184761), hierna te noemen "opdrachtnemer".</p>
-  <p class="reveal">Afwijkingen van deze voorwaarden zijn uitsluitend geldig indien schriftelijk overeengekomen. Toepasselijkheid van de algemene voorwaarden van de opdrachtgever wordt uitdrukkelijk van de hand gewezen.</p>
+  <h2 class="reveal">Definities</h2>
+  <p class="reveal">In deze voorwaarden wordt verstaan onder:</p>
+  <p class="reveal"><span class="definitie-term">Opdrachtnemer:</span> Bureau DNK (De Nieuwe Kamer B.V.)</p>
+  <p class="reveal"><span class="definitie-term">Opdrachtgever:</span> de natuurlijke persoon of rechtspersoon die met opdrachtnemer een overeenkomst aangaat.</p>
+  <p class="reveal"><span class="definitie-term">Overeenkomst:</span> iedere afspraak tussen opdrachtgever en opdrachtnemer betreffende de levering van diensten.</p>
+  <p class="reveal"><span class="definitie-term">Diensten:</span> alle werkzaamheden op het gebied van strategie, consultancy, marketing, sales, e-commerce, groeibegeleiding, interim-management, AI-toepassingen, projectbegeleiding, workshops, training, implementatie en aanverwante dienstverlening.</p>
+  <p class="reveal"><span class="definitie-term">Deliverables:</span> alle in het kader van de overeenkomst ontwikkelde documenten, presentaties, analyses, rapportages, strategieën, adviezen, ontwerpen, content en overige resultaten van werkzaamheden.</p>
 
   <div class="artikel-nr reveal">Artikel 2</div>
-  <h2 class="reveal">Offertes en overeenkomsten</h2>
-  <p class="reveal">Offertes zijn vrijblijvend en geldig gedurende 30 dagen na dagtekening, tenzij anders vermeld. Een overeenkomst komt tot stand door schriftelijke bevestiging door opdrachtnemer of door aanvang van de werkzaamheden.</p>
-  <p class="reveal">Wijzigingen in de opdracht na totstandkoming van de overeenkomst kunnen leiden tot aanpassing van de prijs en/of doorlooptijd. Opdrachtnemer informeert de opdrachtgever hierover vooraf.</p>
+  <h2 class="reveal">Toepasselijkheid</h2>
+  <ol class="reveal">
+    <li>Deze algemene voorwaarden zijn van toepassing op alle offertes, overeenkomsten, werkzaamheden en rechtsverhoudingen tussen opdrachtnemer en opdrachtgever.</li>
+    <li>Afwijkingen van deze voorwaarden zijn uitsluitend geldig indien schriftelijk overeengekomen.</li>
+    <li>De toepasselijkheid van inkoop- of andere voorwaarden van opdrachtgever wordt uitdrukkelijk uitgesloten.</li>
+    <li>Indien één of meerdere bepalingen nietig blijken of vernietigd worden, blijven de overige bepalingen volledig van toepassing.</li>
+  </ol>
 
   <div class="artikel-nr reveal">Artikel 3</div>
-  <h2 class="reveal">Tarieven en kosten</h2>
-  <p class="reveal">Alle tarieven zijn exclusief BTW, tenzij uitdrukkelijk anders vermeld. Opdrachtnemer hanteert zowel uurtarieven als vaste projectprijzen, zoals vastgelegd in de overeenkomst.</p>
-  <p class="reveal">Onkosten en reiskosten worden apart gefactureerd op basis van werkelijke kosten. Reiskosten per auto worden berekend op basis van €0,60 per kilometer.</p>
+  <h2 class="reveal">Offertes en totstandkoming overeenkomst</h2>
+  <ol class="reveal">
+    <li>Alle offertes en voorstellen van opdrachtnemer zijn vrijblijvend, tenzij schriftelijk anders vermeld.</li>
+    <li>Een overeenkomst komt tot stand zodra opdrachtgever schriftelijk akkoord geeft op een offerte, voorstel of opdrachtbevestiging, dan wel wanneer opdrachtnemer feitelijk aanvangt met de uitvoering van werkzaamheden.</li>
+    <li>Opdrachtnemer is gerechtigd werkzaamheden gefaseerd uit te voeren en afzonderlijk te factureren.</li>
+    <li>Meerwerk en aanvullende werkzaamheden worden afzonderlijk gefactureerd op basis van het geldende tarief, tenzij schriftelijk anders overeengekomen.</li>
+  </ol>
 
   <div class="artikel-nr reveal">Artikel 4</div>
-  <h2 class="reveal">Facturering en betaling</h2>
-  <p class="reveal">Facturen dienen te worden voldaan binnen 14 dagen na factuurdatum, tenzij schriftelijk een andere termijn is overeengekomen.</p>
-  <p class="reveal">Bij projectopdrachten geldt een aanbetaling van 50% bij aanvang en 50% bij afronding van de opdracht, tenzij schriftelijk anders overeengekomen.</p>
-  <p class="reveal">Bij doorlopende retaineropdrachten wordt maandelijks gefactureerd, waarbij de factuur wordt verstuurd rond het midden van de lopende maand.</p>
-  <p class="reveal">Bij overschrijding van de betalingstermijn is de opdrachtgever van rechtswege in verzuim en is opdrachtnemer gerechtigd de wettelijke handelsrente in rekening te brengen, alsmede de redelijke incassokosten.</p>
+  <h2 class="reveal">Uitvoering van de opdracht</h2>
+  <ol class="reveal">
+    <li>Opdrachtnemer zal de overeenkomst naar beste inzicht en vermogen uitvoeren.</li>
+    <li>Alle werkzaamheden van opdrachtnemer betreffen uitdrukkelijk een inspanningsverplichting en nimmer een resultaatsverplichting.</li>
+    <li>Opdrachtnemer geeft geen garanties ten aanzien van commerciële resultaten, omzetgroei, winstgroei, leadgeneratie, conversiepercentages, marketingprestaties, rankings, advertentieresultaten of andere bedrijfsmatige uitkomsten.</li>
+    <li>Opdrachtgever blijft te allen tijde zelf verantwoordelijk voor:
+      <ol class="sub-alpha">
+        <li>commerciële beslissingen</li>
+        <li>financiële beslissingen</li>
+        <li>operationele keuzes</li>
+        <li>juridische controles</li>
+        <li>implementatie van adviezen</li>
+        <li>uiteindelijke bedrijfsvoering</li>
+      </ol>
+    </li>
+    <li>Opdrachtgever draagt zorg voor tijdige aanlevering van alle informatie, toegang, systemen, accounts, feedback en goedkeuringen die redelijkerwijs noodzakelijk zijn voor uitvoering van de opdracht.</li>
+    <li>Vertragingen ontstaan door het niet tijdig aanleveren van informatie, feedback of toegang door opdrachtgever komen volledig voor rekening en risico van opdrachtgever.</li>
+    <li>Opdrachtnemer is gerechtigd werkzaamheden geheel of gedeeltelijk door derden, freelancers, partners of onderaannemers te laten uitvoeren.</li>
+  </ol>
 
   <div class="artikel-nr reveal">Artikel 5</div>
-  <h2 class="reveal">Intellectueel eigendom</h2>
-  <p class="reveal">Alle door opdrachtnemer geproduceerde werken — waaronder strategiedocumenten, rapporten, presentaties, systemen en andere deliverables — blijven eigendom van opdrachtnemer totdat de betreffende factuur volledig is voldaan.</p>
-  <p class="reveal">Na volledige betaling draagt opdrachtnemer alle intellectuele eigendomsrechten op de geleverde werken over aan de opdrachtgever, tenzij schriftelijk anders is overeengekomen.</p>
-  <p class="reveal">Opdrachtnemer behoudt te allen tijde het recht de opdracht te vermelden in referentiemateriaal, tenzij de opdrachtgever schriftelijk bezwaar maakt.</p>
+  <h2 class="reveal">Tarieven en betaling</h2>
+  <ol class="reveal">
+    <li>Alle tarieven zijn exclusief btw en overige heffingen van overheidswege.</li>
+    <li>Facturen dienen binnen 14 dagen na factuurdatum te worden voldaan, tenzij schriftelijk anders overeengekomen.</li>
+    <li>Bij niet-tijdige betaling is opdrachtgever van rechtswege in verzuim zonder nadere ingebrekestelling.</li>
+    <li>Vanaf het moment van verzuim is opdrachtgever wettelijke handelsrente verschuldigd, evenals alle redelijke kosten ter verkrijging van voldoening buiten rechte.</li>
+    <li>Opdrachtnemer heeft het recht werkzaamheden op te schorten zolang opdrachtgever niet aan diens betalingsverplichtingen voldoet.</li>
+    <li>Opdrachtnemer is gerechtigd vooruitbetalingen, voorschotten of tussentijdse facturatie te verlangen.</li>
+    <li>Doorlopende overeenkomsten en retainers mogen jaarlijks door opdrachtnemer worden geïndexeerd conform CPI of met minimaal 5%.</li>
+  </ol>
 
   <div class="artikel-nr reveal">Artikel 6</div>
-  <h2 class="reveal">Aansprakelijkheid</h2>
-  <p class="reveal">De aansprakelijkheid van opdrachtnemer is beperkt tot het bedrag dat in het kader van de betreffende opdracht in de drie maanden voorafgaand aan het schadeveroorzakende feit is gefactureerd.</p>
-  <p class="reveal">Opdrachtnemer is niet aansprakelijk voor indirecte schade, gevolgschade, gederfde winst of schade door verlies van gegevens. Opdrachtnemer is evenmin aansprakelijk voor fouten of tekortkomingen van door hem ingeschakelde derden.</p>
+  <h2 class="reveal">Duur en beëindiging</h2>
+  <ol class="reveal">
+    <li>Overeenkomsten voor onbepaalde tijd kunnen door beide partijen schriftelijk worden opgezegd met inachtneming van een opzegtermijn van twee kalendermaanden, tenzij schriftelijk anders overeengekomen.</li>
+    <li>Indien sprake is van een overeengekomen minimumduur, kan tussentijdse opzegging uitsluitend plaatsvinden tegen het einde van die minimumduur.</li>
+    <li>Opdrachtnemer heeft het recht de overeenkomst met onmiddellijke ingang te beëindigen indien:
+      <ol class="sub-alpha">
+        <li>opdrachtgever tekortschiet in betalingsverplichtingen</li>
+        <li>opdrachtgever faillissement aanvraagt of in surseance verkeert</li>
+        <li>voortzetting van de samenwerking redelijkerwijs niet van opdrachtnemer kan worden verlangd</li>
+      </ol>
+    </li>
+    <li>Reeds verrichte werkzaamheden en gemaakte kosten blijven volledig verschuldigd.</li>
+  </ol>
 
   <div class="artikel-nr reveal">Artikel 7</div>
-  <h2 class="reveal">Vertrouwelijkheid</h2>
-  <p class="reveal">Opdrachtnemer behandelt alle informatie die hij in het kader van de opdracht ontvangt als vertrouwelijk en deelt deze niet met derden, tenzij dit noodzakelijk is voor de uitvoering van de opdracht of opdrachtnemer hiertoe wettelijk verplicht is.</p>
+  <h2 class="reveal">Intellectueel eigendom</h2>
+  <ol class="reveal">
+    <li>Alle intellectuele eigendomsrechten op bestaande methodieken, frameworks, modellen, templates, prompts, processen, werkwijzen, software, tooling, analyses, knowhow en overige materialen van opdrachtnemer blijven uitsluitend eigendom van opdrachtnemer.</li>
+    <li>Tenzij schriftelijk anders overeengekomen verkrijgt opdrachtgever uitsluitend een niet-exclusief en niet-overdraagbaar gebruiksrecht op specifiek voor opdrachtgever ontwikkelde deliverables.</li>
+    <li>Intellectuele eigendomsrechten gaan uitsluitend over indien dit expliciet en schriftelijk is overeengekomen.</li>
+    <li>Het is opdrachtgever niet toegestaan materialen van opdrachtnemer te reproduceren, exploiteren, doorverkopen of aan derden beschikbaar te stellen zonder voorafgaande schriftelijke toestemming.</li>
+    <li>Opdrachtnemer behoudt het recht generieke kennis, ervaring, ideeën, inzichten en methodieken die tijdens de opdracht zijn ontwikkeld of toegepast vrijelijk te blijven gebruiken.</li>
+  </ol>
 
   <div class="artikel-nr reveal">Artikel 8</div>
-  <h2 class="reveal">Opzegging en ontbinding</h2>
-  <p class="reveal">Doorlopende overeenkomsten kunnen door beide partijen worden opgezegd met inachtneming van een opzegtermijn van één kalendermaand, tenzij schriftelijk anders overeengekomen.</p>
-  <p class="reveal">Bij tussentijdse beëindiging door de opdrachtgever zijn de reeds verrichte werkzaamheden en gemaakte kosten direct opeisbaar. De aanbetaling van 50% bij projectwerk wordt niet gerestitueerd.</p>
-  <p class="reveal">Opdrachtnemer is gerechtigd de overeenkomst met onmiddellijke ingang te ontbinden indien de opdrachtgever zijn verplichtingen niet nakomt en na schriftelijke ingebrekestelling nalatig blijft.</p>
+  <h2 class="reveal">Gebruik van AI en technologie</h2>
+  <ol class="reveal">
+    <li>Opdrachtnemer is gerechtigd gebruik te maken van AI-systemen, automatisering, taalmodellen en andere technologische hulpmiddelen bij de uitvoering van werkzaamheden.</li>
+    <li>Opdrachtgever begrijpt en accepteert dat AI-gegenereerde output fouten, onvolledigheden, onnauwkeurigheden of overeenkomsten met bestaande content kan bevatten.</li>
+    <li>Opdrachtgever blijft te allen tijde zelf verantwoordelijk voor controle, beoordeling en uiteindelijke goedkeuring van alle opgeleverde output.</li>
+    <li>Opdrachtnemer aanvaardt geen aansprakelijkheid voor schade voortvloeiend uit het gebruik van AI-gegenereerde output.</li>
+  </ol>
 
   <div class="artikel-nr reveal">Artikel 9</div>
-  <h2 class="reveal">Toepasselijk recht</h2>
-  <p class="reveal">Op alle overeenkomsten tussen opdrachtnemer en opdrachtgever is Nederlands recht van toepassing. Geschillen worden bij uitsluiting voorgelegd aan de bevoegde rechter in het arrondissement Rotterdam.</p>
+  <h2 class="reveal">Geheimhouding</h2>
+  <ol class="reveal">
+    <li>Partijen verplichten zich tot geheimhouding van alle vertrouwelijke informatie die zij in het kader van de overeenkomst van elkaar verkrijgen.</li>
+    <li>Informatie geldt als vertrouwelijk indien dit redelijkerwijs voortvloeit uit de aard van de informatie of indien dit schriftelijk is medegedeeld.</li>
+    <li>De geheimhoudingsverplichting blijft ook na beëindiging van de overeenkomst van kracht.</li>
+  </ol>
 
-  <p class="voorwaarden-updated reveal">Versie 1.0 — Mei 2026</p>
+  <div class="artikel-nr reveal">Artikel 10</div>
+  <h2 class="reveal">Privacy en persoonsgegevens</h2>
+  <ol class="reveal">
+    <li>Voor zover opdrachtnemer persoonsgegevens verwerkt in het kader van de overeenkomst, gebeurt dit uitsluitend ten behoeve van de uitvoering van de opdracht.</li>
+    <li>Opdrachtgever blijft verantwoordelijk voor de rechtmatigheid van de aangeleverde gegevens en voor naleving van toepasselijke privacywetgeving.</li>
+    <li>Opdrachtgever geldt als verwerkingsverantwoordelijke tenzij schriftelijk anders overeengekomen.</li>
+  </ol>
+
+  <div class="artikel-nr reveal">Artikel 11</div>
+  <h2 class="reveal">Aansprakelijkheid</h2>
+  <ol class="reveal">
+    <li>Iedere aansprakelijkheid van opdrachtnemer is beperkt tot het bedrag dat in het betreffende geval door de aansprakelijkheidsverzekering van opdrachtnemer wordt uitgekeerd.</li>
+    <li>Indien om welke reden dan ook geen uitkering krachtens verzekering plaatsvindt, is de aansprakelijkheid beperkt tot maximaal het factuurbedrag van de betreffende opdracht over de laatste drie maanden voorafgaand aan het schadeveroorzakende feit.</li>
+    <li>Opdrachtnemer is nimmer aansprakelijk voor:
+      <ol class="sub-alpha">
+        <li>indirecte schade</li>
+        <li>gevolgschade</li>
+        <li>omzetverlies</li>
+        <li>winstderving</li>
+        <li>gemiste besparingen</li>
+        <li>reputatieschade</li>
+        <li>verlies van data</li>
+        <li>claims van derden</li>
+        <li>schade voortvloeiend uit beslissingen gebaseerd op adviezen van opdrachtnemer</li>
+      </ol>
+    </li>
+    <li>Iedere aanspraak op schadevergoeding vervalt indien deze niet schriftelijk en gemotiveerd is gemeld binnen 30 dagen nadat opdrachtgever bekend werd met de schade.</li>
+    <li>Opdrachtgever vrijwaart opdrachtnemer voor aanspraken van derden voortvloeiend uit de uitvoering van de overeenkomst.</li>
+  </ol>
+
+  <div class="artikel-nr reveal">Artikel 12</div>
+  <h2 class="reveal">Relatiebeding / non-circumvention</h2>
+  <ol class="reveal">
+    <li>Het is opdrachtgever niet toegestaan gedurende de overeenkomst en gedurende twaalf maanden na beëindiging daarvan rechtstreeks samen te werken met, personeel in dienst te nemen van, of opdrachten te verstrekken aan door opdrachtnemer ingezette freelancers, consultants, partners of andere derden zonder voorafgaande schriftelijke toestemming van opdrachtnemer.</li>
+    <li>Bij overtreding van dit artikel is opdrachtgever een direct opeisbare boete verschuldigd van €25.000 per overtreding, vermeerderd met €1.000 per dag dat de overtreding voortduurt, onverminderd het recht van opdrachtnemer volledige schadevergoeding te vorderen.</li>
+  </ol>
+
+  <div class="artikel-nr reveal">Artikel 13</div>
+  <h2 class="reveal">Overmacht</h2>
+  <ol class="reveal">
+    <li>Opdrachtnemer is niet gehouden tot nakoming van verplichtingen indien sprake is van overmacht.</li>
+    <li>Onder overmacht wordt mede verstaan:
+      <ol class="sub-alpha">
+        <li>storingen in software of systemen</li>
+        <li>internetstoringen</li>
+        <li>uitval van AI-systemen of externe platforms</li>
+        <li>ziekte</li>
+        <li>overheidsmaatregelen</li>
+        <li>stakingen</li>
+        <li>uitval van derden of leveranciers</li>
+      </ol>
+    </li>
+    <li>Tijdens overmacht worden verplichtingen van opdrachtnemer opgeschort.</li>
+  </ol>
+
+  <div class="artikel-nr reveal">Artikel 14</div>
+  <h2 class="reveal">Toepasselijk recht en bevoegde rechter</h2>
+  <ol class="reveal">
+    <li>Op alle overeenkomsten en rechtsverhoudingen tussen partijen is uitsluitend Nederlands recht van toepassing.</li>
+    <li>Geschillen worden uitsluitend voorgelegd aan de bevoegde rechter te Rotterdam.</li>
+  </ol>
+
+  <p class="voorwaarden-updated reveal">Versie 2.0 — Mei 2026</p>
 
 </div>
 
