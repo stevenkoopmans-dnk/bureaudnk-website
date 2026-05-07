@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+    background: #1a2d2c;
+    font-family: 'Instrument Sans', sans-serif;
+    display: flex;
+    align-items: flex-end;
+    padding: 72px 80px;
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+  }
+  .label {
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .label::before {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: rgba(255,255,255,0.2);
+    display: block;
+  }
+  h1 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 72px;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: #f7f6f3;
+  }
+  h1 em {
+    font-style: italic;
+    color: rgba(255,255,255,0.4);
+  }
+  .bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 8px;
+  }
+  .tagline {
+    font-size: 18px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.01em;
+    max-width: 480px;
+    line-height: 1.6;
+  }
+  .logo-area {
+    text-align: right;
+  }
+  .logo-name {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+  }
+  .logo-sub {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.2);
+    margin-top: 4px;
+  }
+  .deco {
+    position: absolute;
+    top: 0; right: 0;
+    width: 420px;
+    height: 630px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .deco-text {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 320px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.035);
+    letter-spacing: -0.04em;
+    user-select: none;
+    line-height: 1;
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Instrument+Sans:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="deco"><div class="deco-text">DNK</div></div>
+  <div class="content">
+    <div class="label">Bureau DNK · Rotterdam</div>
+    <h1>Commerciële groei.<br><em>Zonder ruis.</em></h1>
+    <div class="bottom">
+      <p class="tagline">Fractional CCO en eCommerce Manager voor digital agencies en scale-ups.</p>
+      <div class="logo-area">
+        <div class="logo-name">Bureau DNK</div>
+        <div class="logo-sub">De Nieuwe Kamer</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
