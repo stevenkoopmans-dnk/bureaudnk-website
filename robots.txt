@@ -2,6 +2,8 @@
 
 User-agent: *
 Allow: /
+Disallow: /og-image.html
+Disallow: /dienst-template.html
 
 Sitemap: https://bureaudnk.nl/sitemap.xml
 
