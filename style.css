@@ -77,12 +77,15 @@ nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
   padding: 20px 64px;
+  background: transparent;
+  transition: background .4s var(--ease), padding .5s var(--ease), box-shadow .4s var(--ease);
+}
+nav.scrolled {
+  padding: 16px 64px;
   background: rgba(247,246,243,0.96);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0,0,0,0.06);
-  transition: padding .5s var(--ease);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.06);
 }
-nav.scrolled { padding: 16px 64px; }
 .nav-logo img { height: 32px; width: auto; display: block; }
 .nav-links { display: flex; gap: 48px; list-style: none; }
 .nav-links a {
