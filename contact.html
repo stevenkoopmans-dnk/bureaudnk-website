@@ -54,8 +54,14 @@
 .form-feedback.success{display:block;border-color:#3a7a3a;background:#f0f7f0;color:#2a5a2a;}
 .form-feedback.error{display:block;border-color:#b04040;background:#fdf0f0;color:#7a2020;}
 
+/* Contact-pagina krijgt een vaste teal nav-balk met inverted items */
+nav#nav, nav#nav.scrolled{background:var(--ink);}
+nav#nav.scrolled{box-shadow:0 1px 0 rgba(255,255,255,0.06);}
 .nav-logo img{transition:filter .4s var(--ease);}
-nav#nav:not(.scrolled) .nav-logo img{filter:brightness(0) invert(1);}
+nav#nav .nav-logo img{filter:brightness(0) invert(1);}
+nav#nav .nav-links a{color:var(--paper);opacity:0.5;}
+nav#nav .nav-links a:hover,nav#nav .nav-links a.active{opacity:1;}
+nav#nav .nav-cta{background:var(--paper);color:var(--ink);}
 
 @media(max-width:960px){
   .contact-wrap{grid-template-columns:1fr;}
