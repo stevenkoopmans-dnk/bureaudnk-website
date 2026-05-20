@@ -108,7 +108,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="contact-right">
     <h2 class="form-title reveal">Stuur een bericht</h2>
     <div id="form-feedback" class="form-feedback" role="alert"></div>
-    <form id="contact-form" action="/contact" method="POST">
+    <form id="contact-form" action="https://formspree.io/f/meervzby" method="POST">
+      <input type="hidden" name="_subject" value="Nieuw bericht via bureaudnk.nl">
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="form-row">
         <div class="form-group reveal">
           <label class="form-label">Naam</label>
@@ -157,18 +159,10 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// Show success message if redirected back after successful submission
-const params = new URLSearchParams(window.location.search);
 const feedback = document.getElementById('form-feedback');
-if (params.get('verzonden') === '1') {
-  feedback.className = 'form-feedback success';
-  feedback.textContent = 'Uw bericht is verstuurd. We nemen zo snel mogelijk contact op.';
-  document.getElementById('contact-form').style.display = 'none';
-  history.replaceState({}, '', window.location.pathname);
-}
+const form = document.getElementById('contact-form');
 
-// Progressive enhancement: submit via fetch to stay on page
-document.getElementById('contact-form').addEventListener('submit', async function(e) {
+form.addEventListener('submit', async function(e) {
   e.preventDefault();
   const btn = this.querySelector('.form-submit');
   const original = btn.textContent;
@@ -178,16 +172,20 @@ document.getElementById('contact-form').addEventListener('submit', async functio
   feedback.textContent = '';
 
   try {
-    const res = await fetch('/contact', { method: 'POST', body: new FormData(this) });
-    if (res.ok || res.redirected) {
+    const res = await fetch(this.action, {
+      method: 'POST',
+      body: new FormData(this),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
       feedback.className = 'form-feedback success';
       feedback.textContent = 'Uw bericht is verstuurd. We nemen zo snel mogelijk contact op.';
       this.reset();
       this.style.display = 'none';
     } else {
-      const msg = await res.text();
+      const data = await res.json().catch(() => ({}));
       feedback.className = 'form-feedback error';
-      feedback.textContent = msg || 'Er ging iets mis. Probeer het later opnieuw.';
+      feedback.textContent = data.errors?.map(e => e.message).join(' ') || 'Er ging iets mis. Probeer het later opnieuw.';
       btn.textContent = original;
       btn.disabled = false;
     }
