@@ -54,6 +54,9 @@
 .form-feedback.success{display:block;border-color:#3a7a3a;background:#f0f7f0;color:#2a5a2a;}
 .form-feedback.error{display:block;border-color:#b04040;background:#fdf0f0;color:#7a2020;}
 
+.nav-logo img{transition:filter .4s var(--ease);}
+nav#nav:not(.scrolled) .nav-logo img{filter:brightness(0) invert(1);}
+
 @media(max-width:960px){
   .contact-wrap{grid-template-columns:1fr;}
   .contact-left{padding:120px 24px 60px;}
