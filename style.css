@@ -73,14 +73,14 @@ body {
 .btn-ghost:hover::after { transform: translateX(4px); }
 
 /* ── NAV ── */
-nav {
+nav#nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
   padding: 20px 64px;
   background: transparent;
   transition: background .4s var(--ease), padding .5s var(--ease), box-shadow .4s var(--ease);
 }
-nav.scrolled {
+nav#nav.scrolled {
   padding: 16px 64px;
   background: rgba(247,246,243,0.96);
   backdrop-filter: blur(12px);
@@ -172,7 +172,7 @@ footer img { height: 26px; opacity: 0.5; filter: invert(1); }
 
 /* ── RESPONSIVE — gedeeld ── */
 @media (max-width: 960px) {
-  nav, nav.scrolled { padding: 20px 24px; }
+  nav#nav, nav#nav.scrolled { padding: 20px 24px; }
   .nav-links { display: none; }
   .section     { padding: 80px 24px; }
   .section-sm  { padding: 56px 24px; }
