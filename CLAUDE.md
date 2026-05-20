@@ -1,166 +1,64 @@
-# CLAUDE.md — Bureau DNK Website
+# CLAUDE.md, Bureau DNK Website
+
 **Project:** bureaudnk.nl
-**Map:** `bureaudnk Website/`
-**Eigenaar:** Steven Koopmans — eigen bedrijf, volledige autonomie
+**Map:** `bureaudnk/`
+**Eigenaar:** Steven Koopmans, eigen bedrijf, volledige autonomie
 **Laatste update:** mei 2026
 
----
-
-## 1. Projectcontext
-
-Dit is de website van Bureau DNK — Steve's eigen boutique consultancy voor commerciële groei bij digital agencies en eCommerce teams. De site is een platte, statische one pager. Geen CMS, geen framework — gewoon HTML/CSS/JS.
-
-De bestaande site in deze map is de basis. We verbeteren incrementeel — we herbouwen niet van scratch.
-
-**Doelgroep:** Founders en directeuren van digital agencies en eCommerce bedrijven die commercieel vastlopen of willen opschalen.
-
-**Tone of voice:** Scherp, direct, zonder ruis. Geen agentuurjargon. Geen lijstjes met buzzwords. De site klinkt als een adviseur op directieniveau — niet als een bureau dat zichzelf aanprijst.
+Dit is de korte oriëntatie. De volledige documentatie staat in [docs/](docs/) en [prompts/](prompts/).
 
 ---
 
-## 2. Conversiedoel
+## Lees dit eerst (in deze volgorde)
 
-**Primaire conversie:** Gesprek inplannen ("Plan gesprek" / "Koffie en kennismaken")
-**Secundaire conversie:** LinkedIn-verbinding
+1. [docs/vision.md](docs/vision.md), wat dit project is en niet is
+2. [docs/business-rules.md](docs/business-rules.md), conversiedoel, tone, content-regels
+3. [docs/architecture.md](docs/architecture.md), structuur, hosting, deploy, git-workflow
+4. [docs/conventions.md](docs/conventions.md), HTML/CSS/JS-stijl, lokaal testen, branchewerk
+5. [docs/design-system.md](docs/design-system.md), kleuren, type, spacing, nav-gedrag, page-scoped overrides
+6. [docs/api-rules.md](docs/api-rules.md), Formspree-endpoint, GTM, externe diensten
 
-**CTA-teksten:**
-- "Plan gesprek" (nav)
-- "Koffie en kennismaken" (hero)
+Voor terugkerend werk gebruik je een template uit [prompts/](prompts/), zoals `prompts/new-feature.md`, `prompts/bug-fix.md`, `prompts/copy-update.md`, `prompts/new-service-page.md`, `prompts/deploy-check.md`.
 
-**Formulier:** Geen uitgebreid formulier — doorverwijzing naar Calendly of directe mail
-**Lead-endpoint:** Steve's eigen G-Suite Gmail
+Voor het kicken van een nieuwe sessie: `prompts/session-kickoff.md`.
 
----
+## In één alinea
 
-## 3. Design tokens
+Statische site (vanilla HTML/CSS/JS) voor bureaudnk.nl, gehost op Cloudflare Pages. Push naar `main` triggert deploy. Contactformulier post naar Formspree (`meervzby`), die mailt naar `steven@bureaudnk.nl`. Inkomende mail loopt via Google Workspace, daarom geen Cloudflare Email Routing. Hoofdnav heeft altijd `id="nav"`, anders breekt de CSS-scope en de scroll-listener.
 
-```css
-:root {
-  --color-primary:   #1A1714;   /* bijna-zwart — tekst en CTA-knoppen */
-  --color-secondary: #F5F2EC;   /* warm off-white — achtergrond */
-  --color-accent:    #EDE9D4;   /* licht zand — hover states en subtiele vlakken */
-  --color-bg:        #F5F2EC;
-  --color-text:      #1A1714;
+## Hard rules (altijd toepassen)
 
-  --font-heading: 'Cormorant Garamond', serif;   /* koppen — elegant, hoog contrast */
-  --font-body:    'Instrument Sans', sans-serif; /* body — clean, leesbaar */
-}
-```
+- **Eén onderwerp per branch.** Naam in NL: `feature/<korte-omschrijving>`
+- **Commit messages in NL.** Eén regel, beschrijvend, geen em-dashes
+- **Nooit pushen zonder expliciete bevestiging van Steve.** Push naar main is deploy
+- **Geen em-dashes (`—`)** in tekst, copy, mail, code-comments of commit messages. Komma, punt, dubbele punt of haakjes
+- **Geen AI-tells.** Geen "het is essentieel", "in een wereld waarin", "in het hedendaagse landschap", verplichte drie-bullets, gladde afsluiters
+- **Mobile-first.** Mobiel én desktop testen, beide nav-states (top + na scroll)
+- **`nav#nav` voor hoofdnav-styling.** Niet generieke `nav { ... }`
+- **Hoofdnav heeft altijd `id="nav"`.** Anders breekt main.js en de scoped CSS
+- **Geen secrets in code of commits**
+- **Geen frameworks, geen build-tools, geen CSS-preprocessors**
+- **Geen `git push --force` op main**
 
-**Ontwerpprincipes:**
-- Warm, minimalistisch, premium — geen koude tech-aesthetic
-- Veel witruimte
-- Geen afbeeldingen tenzij ze echt waarde toevoegen
-- Typografie doet het werk
+## Belangrijkste gotchas (uit eerdere sessies)
 
----
+- **Cloudflare Email Routing kan niet aan.** MX van bureaudnk.nl wijst naar Google Workspace. Email Routing zou die overschrijven en alle inkomende mail breken. Niet opnieuw proberen
+- **`functions/contact.js` is bewust verwijderd.** De form gebruikt nu Formspree direct. Niet terugzetten zonder Steve
+- **Cache bij lokaal testen.** Bust de cache met `?cb=Date.now()` op de stylesheet href, anders zie je verouderde CSS
+- **Eerste Formspree-submit ooit triggert een verification-mail.** Pas daarna komen echte leads door
+- **Contact.html heeft een eigen teal nav-balk.** Page-scoped override in zijn `<style>` blok, geen body-class
 
-## 4. Sitestructuur
+## Project-defaults
 
-Drie losse HTML-pagina's — geen one pager.
+- Tagline: "Commerciële groei. Zonder ruis." Nooit wijzigen zonder Steve
+- Primaire CTA-tekst: "Plan gesprek" (nav), "Koffie en kennismaken" (hero)
+- Lead-endpoint: `steven@bureaudnk.nl` via Formspree (form-id `meervzby`)
+- Title-format: `[Onderwerp] — Bureau DNK` (em-dash hier is OK, technische SEO-conventie)
+- Breakpoint: 960px is de mobile/desktop switch
+- Co-author footer op commits: `Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>`
 
-```
-index.html    → Homepage — propositie + diensten + CTA
-over.html     → Over Bureau DNK — Steven's achtergrond en aanpak
-contact.html  → Contactformulier + LinkedIn
-```
+## Wanneer in twijfel
 
-**Navigatie (alle pagina's):**
-```
-HOME | OVER | CONTACT | KOFFIE EN KENNISMAKEN
-```
+Lees de relevante doc uit [docs/](docs/). Daar staat het. Wat in docs en code conflicteert: code wint, docs moeten mee.
 
-**Per pagina:**
-
-`index.html`
-- Hero: "Commerciële groei. Zonder ruis." + twee CTA's
-- Scrollende serviceticker (Commerciële strategie, Salesstructuur, Positionering, etc.)
-- Diensten uitgeschreven (01–04)
-- Afsluitende CTA-sectie
-
-`over.html`
-- "De moderne handelskamer voor digitale groei"
-- Steven's achtergrond: 20+ jaar, agency én client side
-- Waarom De Nieuwe Kamer / Rotterdam
-
-`contact.html`
-- "Laten we kijken waar het schuurt."
-- Contactformulier: Naam + Bedrijf + Telefoonnummer + Wat speelt er?
-- LinkedIn als alternatief kanaal
-
----
-
-## 5. Incrementeel werken — hier leer je het
-
-Dit project is het oefenproject voor de Git-werkwijze. Elke verbetering is een aparte feature branch. Nooit alles tegelijk.
-
-### Hoe we werken
-
-**Stap 1 — Branch aanmaken**
-```bash
-cd "/Users/stevenkoopmans/Claude Code folder/bureaudnk Website"
-git checkout -b feature/naam-van-de-wijziging
-```
-
-**Stap 2 — Wijziging maken**
-Claude Code past één ding aan. Niet meer.
-
-**Stap 3 — Committen**
-```bash
-git add .
-git commit -m "Beschrijving van wat er veranderd is"
-```
-
-**Stap 4 — Reviewen**
-Steve opent het bestand lokaal in de browser en beoordeelt de wijziging.
-
-**Stap 5 — Mergen naar main**
-```bash
-git checkout main
-git merge feature/naam-van-de-wijziging
-git tag v1.1   # versienummer ophogen
-git push origin main
-```
-
-**Stap 6 — Branch opruimen**
-```bash
-git branch -d feature/naam-van-de-wijziging
-```
-
-### Voorbeelden van goede incrementele features
-
-- `feature/hero-cta-tekst` — alleen de knoptekst aanpassen
-- `feature/diensten-volgorde` — volgorde van diensten wijzigen
-- `feature/contact-sectie` — contactgedeelte verbeteren
-- `feature/meta-tags` — SEO-tags toevoegen
-- `feature/mobile-nav` — navigatie verbeteren op mobiel
-
-### Wat Claude Code bij dit project altijd doet
-
-- Eén wijziging per branch — nooit meerdere dingen tegelijk
-- Legt uit wat er veranderd is en waarom
-- Geeft de exacte terminal-commando's na elke stap
-- Waarschuwt als Steve op het punt staat iets te overschrijven of te verliezen
-- Vraagt bevestiging voor merge naar main
-
----
-
-## 6. SEO
-
-Dit is een personal/zakelijke site — geen lokale SEO. Andere aanpak:
-
-- **Title:** `Bureau DNK — Commerciële groei voor digital agencies`
-- **Meta description:** Actief, max 155 tekens, already live
-- **Geen LocalBusiness schema** — wel Person of Organization schema
-- **Focus zoekwoorden:** fractional CCO, commerciële strategie digital agency, eCommerce strategie Rotterdam
-- **LinkedIn** is het primaire kanaal — de site ondersteunt, LinkedIn converteert
-
----
-
-## 7. Projectnotities
-
-- Bestaande site is de basis — niet herbouwen, wel verbeteren
-- Huidig live via Cloudflare Pages — blijft zo, werkt prima
-- Volgende stap: Git-repo aanmaken en koppelen aan Cloudflare Pages zodat push = deploy (geen handmatige upload meer)
-- Geen template van de GRO-projecten — DNK heeft eigen design en doelgroep
-- Dit project staat los van de GRO component library
+Wijzigingen aan business-rules, design-system of vision: altijd via expliciet overleg met Steve, niet via een feature-branch.
