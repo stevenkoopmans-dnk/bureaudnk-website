@@ -57,6 +57,10 @@
 /* Contact-pagina krijgt een vaste teal nav-balk met inverted items */
 nav#nav, nav#nav.scrolled{background:var(--ink);}
 nav#nav.scrolled{box-shadow:0 1px 0 rgba(255,255,255,0.06);}
+/* Logo links, menu midden, rechts leeg voor balans (geen CTA op deze pagina) */
+nav#nav{display:grid;grid-template-columns:1fr auto 1fr;}
+nav#nav .nav-logo{justify-self:start;}
+nav#nav .nav-links{justify-self:center;}
 .nav-logo img{transition:filter .4s var(--ease);}
 nav#nav .nav-logo img{filter:brightness(0) invert(1);}
 nav#nav .nav-links a{color:var(--paper);opacity:0.5;}
