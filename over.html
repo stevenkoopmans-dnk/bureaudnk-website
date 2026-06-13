@@ -38,46 +38,14 @@
   "sameAs": ["https://www.linkedin.com/in/stevenkoopmans/"]
 }
 </script>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Instrument+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;1,6..96,400;1,6..96,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Instrument+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
 <script src="/main.js" defer></script>
-<style>
-/* ── ABOUT ── */
-.about-body{padding:0 64px 120px;display:grid;grid-template-columns:280px 1fr;gap:120px;margin-top:80px;}
-.about-sticky{position:sticky;top:120px;align-self:start;}
-.sticky-name{font-family:var(--serif);font-size:24px;font-weight:600;margin-bottom:8px;}
-.sticky-title{font-size:13px;color:var(--mid);font-weight:300;line-height:1.7;margin-bottom:32px;}
-.sticky-link{font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:8px;transition:gap .2s;}
-.sticky-link:hover{gap:14px;}
-.sticky-link::after{content:'→';}
-
-.about-content h3{font-family:var(--serif);font-size:clamp(26px,2.2vw,34px);font-weight:400;margin-bottom:20px;margin-top:64px;letter-spacing:-0.01em;}
-.about-content h3:first-child{margin-top:0;}
-.about-content p{font-size:16px;font-weight:300;color:#2e2b28;line-height:1.85;margin-bottom:20px;}
-.about-content p strong{font-weight:500;color:var(--ink);}
-.about-content p em{font-style:italic;}
-.divider{border:none;border-top:1px solid rgba(0,0,0,0.08);margin:0 64px;}
-
-/* ── VALUES ── */
-.values{padding:100px 64px;background:var(--warm);}
-.values-title{font-family:var(--serif);font-size:clamp(32px,3vw,44px);font-weight:400;line-height:1.2;letter-spacing:-0.01em;}
-.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(0,0,0,0.08);margin-top:56px;}
-.value{padding:52px 40px;background:var(--warm);transition:background .3s;}
-.value:hover{background:var(--warmer);}
-.value-nr{font-size:11px;letter-spacing:0.14em;color:var(--light);margin-bottom:16px;}
-.value-title{font-family:var(--serif);font-size:24px;font-weight:400;margin-bottom:14px;}
-.value-text{font-size:15px;font-weight:300;color:var(--mid);line-height:1.7;}
-
-@media(max-width:960px){
-  .about-body{padding:0 24px 80px;grid-template-columns:1fr;gap:48px;margin-top:48px;}
-  .about-sticky{position:static;}
-  .divider{margin:0 24px;}
-  .values{padding:80px 24px;}
-  .values-grid{grid-template-columns:1fr;}
-}
-</style>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -93,7 +61,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
 <nav id="nav">
-  <div class="nav-logo"><a href="/"><img src="/logo_zwart.png" alt="Bureau DNK"></a></div>
+  <a href="/" class="wordmark">Bureau DNK<span class="dot">.</span></a>
   <ul class="nav-links">
     <li><a href="/">Home</a></li>
     <li><a href="/over" class="active">Over</a></li>
@@ -172,7 +140,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <footer>
-  <img src="/logo_zwart.png" alt="Bureau DNK">
+  <div class="footer-word">Bureau DNK<span class="dot">.</span></div>
   <div class="footer-center">Bureau DNK — De Nieuwe Kamer B.V. · Rotterdam</div>
   <nav class="footer-nav">
     <a href="/fractional-cco">Fractional CCO</a>

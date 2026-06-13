@@ -1,120 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="nl">
 <head>
 <meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    width: 1200px;
-    height: 630px;
-    overflow: hidden;
-    background: #1a2d2c;
+    width: 1200px; height: 630px; overflow: hidden;
+    background: #f5f2ea;
     font-family: 'Instrument Sans', sans-serif;
-    display: flex;
-    align-items: flex-end;
-    padding: 72px 80px;
-  }
-  .content {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    width: 100%;
-  }
-  .label {
-    font-size: 13px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.3);
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-  .label::before {
-    content: '';
-    width: 28px;
-    height: 1px;
-    background: rgba(255,255,255,0.2);
-    display: block;
-  }
-  h1 {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 72px;
-    font-weight: 400;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    color: #f7f6f3;
-  }
-  h1 em {
-    font-style: italic;
-    color: rgba(255,255,255,0.4);
-  }
-  .bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-top: 8px;
-  }
-  .tagline {
-    font-size: 18px;
-    font-weight: 300;
-    color: rgba(255,255,255,0.45);
-    letter-spacing: 0.01em;
-    max-width: 480px;
-    line-height: 1.6;
-  }
-  .logo-area {
-    text-align: right;
-  }
-  .logo-name {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 22px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.6);
-  }
-  .logo-sub {
-    font-size: 11px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.2);
-    margin-top: 4px;
+    display: flex; align-items: flex-end; padding: 76px 84px;
+    position: relative;
   }
   .deco {
-    position: absolute;
-    top: 0; right: 0;
-    width: 420px;
-    height: 630px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    pointer-events: none;
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: flex-end;
+    overflow: hidden; pointer-events: none; padding-right: 30px;
   }
   .deco-text {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 320px;
-    font-weight: 600;
-    color: rgba(255,255,255,0.035);
-    letter-spacing: -0.04em;
-    user-select: none;
-    line-height: 1;
+    font-family: 'Bodoni Moda', Didot, Georgia, serif; font-weight: 800; font-style: italic;
+    font-size: 560px; color: transparent; -webkit-text-stroke: 3px rgba(21,18,13,0.07);
+    letter-spacing: -0.04em; line-height: 1; user-select: none;
   }
+  .content { position: relative; z-index: 2; display: flex; flex-direction: column; gap: 26px; width: 100%; }
+  .label {
+    font-size: 14px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #c75434;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .label::before { content: ''; width: 32px; height: 2px; background: #c75434; display: block; }
+  h1 {
+    font-family: 'Bodoni Moda', Didot, Georgia, serif; font-size: 104px; font-weight: 600;
+    line-height: 0.9; letter-spacing: -0.035em; color: #15120d;
+  }
+  h1 em { font-style: italic; font-weight: 500; color: #c75434; }
+  .bottom { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 14px; }
+  .tagline { font-size: 19px; font-weight: 300; color: rgba(21,18,13,0.55); letter-spacing: 0.01em; max-width: 520px; line-height: 1.55; }
+  .logo-name { font-family: 'Bodoni Moda', Didot, Georgia, serif; font-size: 30px; font-weight: 700; letter-spacing: -0.01em; color: #15120d; }
+  .logo-name .dot { color: #c75434; }
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Instrument+Sans:wght@300;400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,600;0,6..96,700;0,6..96,800;1,6..96,500;1,6..96,600&family=Instrument+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="deco"><div class="deco-text">DNK</div></div>
   <div class="content">
-    <div class="label">Bureau DNK · Rotterdam</div>
+    <div class="label">Bureau de Nieuwe Kamer · Rotterdam</div>
     <h1>Commerciële groei.<br><em>Zonder ruis.</em></h1>
     <div class="bottom">
       <p class="tagline">Fractional CCO en eCommerce Manager voor digital agencies en scale-ups.</p>
-      <div class="logo-area">
-        <div class="logo-name">Bureau DNK</div>
-        <div class="logo-sub">De Nieuwe Kamer</div>
-      </div>
+      <div class="logo-name">Bureau DNK<span class="dot">.</span></div>
     </div>
   </div>
 </body>

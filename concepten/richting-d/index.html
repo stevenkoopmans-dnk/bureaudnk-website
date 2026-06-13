@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Richting D — Statement — Bureau DNK</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;0,6..96,800;1,6..96,400;1,6..96,500;1,6..96,600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Instrument+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   RICHTING D — STATEMENT (KINETIC)
+   Bodoni Moda, warm near-black, cream, vermiljoen accent
+   WOW via beweging: line-mask reveals, schaduwwoord-parallax,
+   tellende cijfers, grote kinetische marquee
+   ============================================================ */
+:root {
+  --void:   #0c0b0a;
+  --void-2: #171513;
+  --void-3: #211d1a;
+  --cream:  #f3ede1;
+  --cream-d:rgba(243,237,225,0.55);
+  --cream-f:rgba(243,237,225,0.12);
+  --flash:  #2f4cff;
+  --flash-d:#2438cc;
+  --serif:  'Bodoni Moda', 'Didot', Georgia, serif;
+  --serif-2:'Newsreader', Georgia, serif;
+  --sans:   'Instrument Sans', sans-serif;
+  --ease:   cubic-bezier(0.16, 1, 0.3, 1);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; background: var(--void); }
+body {
+  background: var(--void); color: var(--cream);
+  font-family: var(--sans); font-weight: 300; line-height: 1.6;
+  -webkit-font-smoothing: antialiased; overflow-x: hidden;
+}
+::selection { background: var(--flash); color: var(--cream); }
+
+/* ── KINETIEK: line-mask reveal ── */
+.line { display: block; overflow: hidden; }
+.line > span { display: block; transform: translateY(118%); transition: transform 1s var(--ease); }
+.is-in .line > span { transform: translateY(0); }
+.is-in .line:nth-child(2) > span { transition-delay: .09s; }
+.is-in .line:nth-child(3) > span { transition-delay: .18s; }
+.is-in .line:nth-child(4) > span { transition-delay: .27s; }
+.fade { opacity: 0; transform: translateY(26px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+.fade.is-in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .line > span, .fade { transform: none !important; opacity: 1 !important; transition: none !important; }
+}
+
+.label {
+  font-family: var(--sans); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.28em; text-transform: uppercase; color: var(--flash);
+  display: inline-flex; align-items: center; gap: 14px; margin-bottom: 26px;
+}
+.label::before { content: ''; width: 30px; height: 2px; background: var(--flash); }
+
+.btn {
+  display: inline-block; font-family: var(--sans);
+  font-size: 12px; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; text-decoration: none;
+  padding: 19px 44px; transition: background .25s, color .25s, transform .25s;
+}
+.btn-flash { color: var(--cream); background: var(--flash); }
+.btn-flash:hover { background: var(--cream); color: var(--void); transform: translateY(-3px); }
+.btn-line { color: var(--cream); border: 1px solid var(--cream-f); background: none; }
+.btn-line:hover { border-color: var(--flash); color: var(--flash); }
+.btn-ghost { color: var(--cream-d); background: none; padding: 19px 0; display: inline-flex; align-items: center; gap: 10px; }
+.btn-ghost::after { content: '→'; font-size: 18px; transition: transform .25s; }
+.btn-ghost:hover { color: var(--cream); }
+.btn-ghost:hover::after { transform: translateX(6px); color: var(--flash); }
+
+/* ── NAV ── */
+nav#nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 26px 56px; background: transparent;
+  transition: background .4s var(--ease), padding .5s var(--ease), border-color .4s;
+  border-bottom: 1px solid transparent;
+}
+nav#nav.scrolled { padding: 14px 56px; background: rgba(12,11,10,0.82); backdrop-filter: blur(14px); border-bottom: 1px solid var(--cream-f); }
+.wordmark { font-family: var(--serif); font-weight: 700; font-size: 27px; letter-spacing: -0.01em; color: var(--cream); text-decoration: none; line-height: 1; }
+.wordmark .dot { color: var(--flash); }
+.nav-links { display: flex; gap: 42px; list-style: none; }
+.nav-links a { font-family: var(--sans); font-size: 12px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; color: var(--cream); opacity: 0.55; transition: opacity .2s; }
+.nav-links a:hover { opacity: 1; }
+.nav-cta { font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; color: var(--cream); background: var(--flash); padding: 13px 28px; transition: background .25s, color .25s; }
+.nav-cta:hover { background: var(--cream); color: var(--void); }
+
+.section { padding: 160px 56px; }
+
+/* ── HERO ── */
+.hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 150px 56px 80px; overflow: hidden; }
+.hero-photo { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center; filter: brightness(0.64) saturate(0.84) contrast(1.04); will-change: transform; }
+.hero-grad { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to top, rgba(12,11,10,0.5) 0%, rgba(12,11,10,0.22) 34%, rgba(12,11,10,0) 60%), linear-gradient(96deg, rgba(12,11,10,0.55) 0%, rgba(12,11,10,0.15) 32%, rgba(12,11,10,0) 56%); }
+.hero-ghost {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  font-family: var(--serif); font-weight: 800; font-style: italic;
+  font-size: 50vw; line-height: 0.8; white-space: nowrap; pointer-events: none;
+  z-index: 1; user-select: none; will-change: transform;
+  color: transparent; -webkit-text-stroke: 2px rgba(243,237,225,0.18); text-stroke: 2px rgba(243,237,225,0.18);
+}
+.hero-inner { position: relative; z-index: 3; }
+.hero-eyebrow { font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; color: var(--flash); margin-bottom: 30px; display: inline-flex; align-items: center; gap: 16px; }
+.hero-eyebrow::before { content: ''; width: 44px; height: 2px; background: var(--flash); }
+.mega {
+  font-family: var(--serif); font-weight: 600;
+  font-size: clamp(58px, 11.5vw, 200px); line-height: 0.86;
+  letter-spacing: -0.035em; margin-bottom: 44px;
+}
+.mega em { font-style: italic; font-weight: 500; color: var(--flash); }
+.hero-bottom { display: grid; grid-template-columns: 1fr auto; gap: 56px; align-items: end; max-width: 1180px; }
+.hero-sub { font-size: 18px; font-weight: 300; color: var(--cream-d); max-width: 460px; line-height: 1.75; }
+.hero-meta { font-size: 13px; color: rgba(243,237,225,0.4); margin-top: 14px; letter-spacing: 0.02em; }
+.hero-actions { display: flex; align-items: center; gap: 24px; }
+.scroll-cue { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 2; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cream-d); display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.scroll-cue::before { content: ''; width: 1px; height: 40px; background: linear-gradient(var(--flash), transparent); animation: cue 1.8s var(--ease) infinite; }
+@keyframes cue { 0%,100%{ opacity:.3; transform: scaleY(.6); transform-origin: top; } 50%{ opacity:1; transform: scaleY(1); } }
+
+/* ── MARQUEE (kinetisch, groot) ── */
+.marquee-wrap { background: var(--flash); padding: 26px 0; overflow: hidden; }
+.marquee-track { display: flex; gap: 50px; width: max-content; animation: marquee 28s linear infinite; }
+.marquee-item { font-family: var(--serif); font-size: clamp(22px,2.4vw,34px); font-style: italic; font-weight: 500; color: var(--cream); white-space: nowrap; display: flex; align-items: center; gap: 50px; }
+.marquee-item::after { content: '✦'; font-style: normal; font-size: 0.6em; color: var(--void); }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* ── STATS (tellend) ── */
+.stats { background: var(--void); border-bottom: 1px solid var(--cream-f); }
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+.stat { padding: 70px 36px; border-right: 1px solid var(--cream-f); }
+.stat:last-child { border-right: none; }
+.stat-num { font-family: var(--serif); font-weight: 600; font-size: clamp(48px, 5.5vw, 88px); line-height: 1; letter-spacing: -0.02em; color: var(--cream); display: flex; align-items: baseline; }
+.stat-num .pre, .stat-num .suf { color: var(--flash); font-size: 0.5em; font-style: italic; }
+.stat-num .pre { margin-right: 2px; }
+.stat-label { margin-top: 18px; font-size: 13px; color: var(--cream-d); letter-spacing: 0.04em; line-height: 1.5; }
+
+/* ── DIENSTEN ── */
+.diensten { background: var(--void); }
+.diensten-header { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-bottom: 70px; align-items: end; }
+.display { font-family: var(--serif); font-weight: 600; font-size: clamp(44px,5vw,86px); line-height: 0.96; letter-spacing: -0.02em; }
+.display em { font-style: italic; font-weight: 500; color: var(--flash); }
+.body-lg { font-size: 17px; font-weight: 300; color: var(--cream-d); line-height: 1.8; max-width: 460px; }
+.diensten-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--cream-f); }
+.dienst { padding: 48px 34px 60px; border-right: 1px solid var(--cream-f); border-bottom: 1px solid var(--cream-f); position: relative; overflow: hidden; text-decoration: none; color: inherit; display: block; transition: color .3s; }
+.dienst:nth-child(3n) { border-right: none; }
+.dienst::before { content: ''; position: absolute; inset: 0; background: var(--flash); transform: translateY(101%); transition: transform .45s var(--ease); z-index: 0; }
+.dienst:hover::before { transform: translateY(0); }
+.dienst:hover { color: var(--cream); }
+.dienst > * { position: relative; z-index: 1; }
+.dienst-nr { font-family: var(--serif); font-style: italic; font-size: 22px; color: var(--flash); margin-bottom: 26px; transition: color .3s; }
+.dienst:hover .dienst-nr { color: var(--cream); }
+.dienst-title { font-family: var(--serif-2); font-size: 24px; font-weight: 600; line-height: 1.2; margin-bottom: 16px; letter-spacing: -0.005em; }
+.dienst-text { font-size: 14px; color: var(--cream-d); line-height: 1.7; font-weight: 300; transition: color .3s; }
+.dienst:hover .dienst-text { color: rgba(243,237,225,0.85); }
+
+/* ── IMPACT ── */
+.impact { background: var(--void-2); }
+.impact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--cream-f); margin-top: 60px; border: 1px solid var(--cream-f); }
+.impact-card { padding: 52px 40px; background: var(--void-2); transition: background .3s; }
+.impact-card:hover { background: var(--void-3); }
+.impact-co { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--flash); margin-bottom: 12px; }
+.impact-role { font-family: var(--serif-2); font-size: 26px; font-style: italic; font-weight: 500; color: var(--cream); margin-bottom: 28px; line-height: 1.2; }
+.impact-list { list-style: none; }
+.impact-list li { font-size: 14px; color: var(--cream-d); font-weight: 300; padding: 12px 0; border-bottom: 1px solid var(--cream-f); display: flex; gap: 12px; align-items: flex-start; line-height: 1.5; }
+.impact-list li:last-child { border-bottom: none; }
+.impact-list li::before { content: '→'; color: var(--flash); flex-shrink: 0; }
+
+/* ── SPLIT (duotone beeld) ── */
+.split { display: grid; grid-template-columns: 1fr 1fr; min-height: 600px; background: var(--void); }
+.split-img { overflow: hidden; position: relative; background: var(--void-2); }
+.split-img img { width: 100%; height: 100%; object-fit: cover; object-position: center; filter: brightness(0.84) contrast(1.03) saturate(0.92); transition: transform .9s var(--ease); }
+.split:hover .split-img img { transform: scale(1.04); }
+.split-content { background: var(--void); padding: 90px 56px; display: flex; flex-direction: column; justify-content: center; border-left: 1px solid var(--cream-f); }
+.split-content .label { margin-bottom: 30px; }
+.split-section-title { font-family: var(--serif-2); font-size: clamp(24px,2.2vw,34px); font-weight: 600; margin-bottom: 8px; letter-spacing: -0.005em; }
+.split-sub { font-size: 13px; color: var(--cream-d); margin-bottom: 26px; font-weight: 300; line-height: 1.6; }
+.exp-list { list-style: none; margin-bottom: 44px; }
+.exp-item { padding: 16px 0; border-bottom: 1px solid var(--cream-f); display: flex; justify-content: space-between; align-items: baseline; gap: 20px; }
+.exp-item:last-child { border-bottom: none; }
+.exp-name { font-size: 15px; font-weight: 500; color: var(--cream); white-space: nowrap; }
+.exp-role { font-size: 13px; color: var(--cream-d); font-weight: 300; text-align: right; }
+
+/* ── QUOTE (groot statement) ── */
+.quote-section { padding: 170px 56px; background: var(--void); display: flex; align-items: center; justify-content: center; text-align: center; }
+.quote-inner { max-width: 1000px; }
+.quote-text { font-family: var(--serif); font-size: clamp(30px,4.4vw,68px); font-weight: 500; font-style: italic; line-height: 1.22; letter-spacing: -0.02em; color: var(--cream); margin-bottom: 40px; }
+.quote-text .hl { color: var(--flash); font-style: normal; }
+.quote-attr { font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--cream-d); }
+
+/* ── LOGO LAB ── */
+.logolab { background: var(--void-2); border-top: 1px solid var(--cream-f); }
+.logolab-head { margin-bottom: 56px; }
+.logolab-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 1px; background: var(--cream-f); border: 1px solid var(--cream-f); }
+.lab-cell { background: var(--void); padding: 52px 40px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; min-height: 210px; }
+.lab-cell.light { background: var(--cream); }
+.lab-cell.flash { background: var(--flash); }
+.lab-tag { font-family: var(--sans); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream-d); }
+.lab-cell.light .lab-tag { color: rgba(12,11,10,0.5); }
+.lab-cell.flash .lab-tag { color: rgba(243,237,225,0.7); }
+.lab-wordmark { font-family: var(--serif); font-weight: 700; font-size: 40px; letter-spacing: -0.01em; color: var(--cream); }
+.lab-wordmark .dot { color: var(--flash); }
+.lab-cell.light .lab-wordmark { color: var(--void); }
+.lab-cell.light .lab-wordmark .dot { color: var(--flash); }
+.lab-cell.flash .lab-wordmark { color: var(--cream); }
+.lab-cell.flash .lab-wordmark .dot { color: var(--void); }
+.lab-mono { font-family: var(--serif); font-weight: 700; font-size: 56px; letter-spacing: -0.02em; color: var(--cream); }
+.lab-cell.light .lab-mono { color: var(--void); }
+.lab-mono .dot { color: var(--flash); }
+.favicon-row { display: flex; align-items: flex-end; gap: 20px; }
+.favicon { background: var(--flash); color: var(--cream); font-family: var(--serif); font-weight: 700; display: flex; align-items: center; justify-content: center; line-height: 1; }
+.favicon.lg { width: 48px; height: 48px; font-size: 26px; }
+.favicon.md { width: 32px; height: 32px; font-size: 17px; }
+.favicon.sm { width: 16px; height: 16px; font-size: 9px; }
+.faux-tab { display: inline-flex; align-items: center; gap: 8px; background: var(--void-3); padding: 9px 16px 9px 12px; border-radius: 8px 8px 0 0; font-size: 12px; color: var(--cream-d); }
+
+/* ── CTA (full-bleed statement) ── */
+.cta-section { padding: 0; position: relative; overflow: hidden; background: var(--flash); }
+.cta-inner { padding: 180px 56px; text-align: center; position: relative; z-index: 2; }
+.cta-section .label { color: var(--void); }
+.cta-section .label::before { background: var(--void); }
+.cta-title { font-family: var(--serif); font-size: clamp(52px,8vw,150px); font-weight: 700; line-height: 0.9; letter-spacing: -0.03em; color: var(--cream); margin: 0 auto 26px; max-width: 1000px; }
+.cta-title em { font-style: italic; font-weight: 500; color: var(--void); }
+.cta-sub { font-size: 17px; color: rgba(243,237,225,0.85); font-weight: 300; margin-bottom: 50px; }
+.cta-section .btn-flash { background: var(--void); color: var(--cream); }
+.cta-section .btn-flash:hover { background: var(--cream); color: var(--void); }
+
+/* ── FOOTER ── */
+footer { background: var(--void); padding: 56px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; border-top: 1px solid var(--cream-f); }
+.footer-word { font-family: var(--serif); font-weight: 700; font-size: 26px; color: var(--cream); }
+.footer-word .dot { color: var(--flash); }
+.footer-center { font-size: 12px; color: var(--cream-d); letter-spacing: 0.04em; text-align: center; }
+.footer-right { font-size: 12px; color: var(--cream-d); }
+.footer-right a { color: inherit; text-decoration: none; }
+.footer-right a:hover { color: var(--flash); }
+
+/* ── THEMA-SCHAKELAAR (concept-tool) ── */
+.theme-switch {
+  position: fixed; left: 22px; bottom: 22px; z-index: 200;
+  font-family: var(--sans); font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; text-decoration: none; color: var(--cream);
+  background: rgba(12,11,10,0.78); backdrop-filter: blur(12px);
+  border: 1px solid var(--cream-f); padding: 11px 18px; border-radius: 40px;
+  transition: border-color .2s, color .2s;
+}
+.theme-switch:hover { border-color: var(--flash); color: var(--flash); }
+
+/* ── ACCENT-KIEZER (concept-tool) ── */
+.accent-switch {
+  position: fixed; right: 22px; bottom: 22px; z-index: 200;
+  display: flex; align-items: center; gap: 9px;
+  background: rgba(12,11,10,0.78); backdrop-filter: blur(12px);
+  border: 1px solid var(--cream-f); padding: 11px 15px; border-radius: 40px;
+}
+.accent-switch > span { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cream-d); margin-right: 3px; }
+.accent-dot { appearance: none; width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--cream-f); padding: 0; cursor: pointer; transition: transform .2s, box-shadow .2s; }
+.accent-dot:hover { transform: scale(1.15); }
+.accent-dot.active { box-shadow: 0 0 0 2px var(--cream); }
+
+@media (max-width: 960px) {
+  nav#nav, nav#nav.scrolled { padding: 18px 22px; }
+  .accent-switch { left: 12px; right: 12px; bottom: 12px; justify-content: center; padding: 9px 10px; gap: 7px; }
+  .accent-switch > span { display: none; }
+  .accent-dot { width: 19px; height: 19px; }
+  .theme-switch { left: 12px; bottom: 62px; padding: 8px 13px; font-size: 10px; }
+  .nav-links { display: none; }
+  .section { padding: 90px 22px; }
+  .hero { min-height: auto; padding: 124px 22px 90px; }
+  .hero-ghost { font-size: 92vw; }
+  .mega { font-size: 54px; line-height: 0.9; }
+  .hero-bottom { grid-template-columns: 1fr; gap: 30px; }
+  .hero-actions { flex-wrap: wrap; }
+  .scroll-cue { left: 22px; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .stat { padding: 44px 24px; }
+  .stat:nth-child(2) { border-right: none; }
+  .stat:nth-child(1), .stat:nth-child(2) { border-bottom: 1px solid var(--cream-f); }
+  .diensten-header { grid-template-columns: 1fr; gap: 22px; }
+  .diensten-grid { grid-template-columns: 1fr; }
+  .dienst { border-right: none; }
+  .impact-grid { grid-template-columns: 1fr; }
+  .split { grid-template-columns: 1fr; }
+  .split-img { height: 320px; }
+  .split-content { padding: 56px 22px; border-left: none; }
+  .quote-section { padding: 100px 22px; }
+  .logolab-grid { grid-template-columns: 1fr; }
+  .cta-inner { padding: 110px 22px; }
+  footer { padding: 40px 22px; flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="../" class="wordmark">Bureau DNK<span class="dot">.</span></a>
+  <ul class="nav-links">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Over</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+  <a href="#" class="nav-cta">Plan gesprek</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-photo">
+    <img src="../../rotterdam.jpg" alt="Rotterdam skyline, kantoortorens langs de Maas" id="heroimg">
+    <div class="hero-grad"></div>
+  </div>
+  <div class="hero-ghost" id="ghost">DNK</div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow fade">Rotterdam · Commerciële regie</div>
+    <h1 class="mega">
+      <span class="line"><span>Commerciële</span></span>
+      <span class="line"><span>groei.</span></span>
+      <span class="line"><span>Zonder <em>ruis.</em></span></span>
+    </h1>
+    <div class="hero-bottom">
+      <div class="fade">
+        <p class="hero-sub">Ik help digital agencies en eCommerce bedrijven commercieel scherper worden. Niet als adviseur die rapporten schrijft, maar als iemand die meedoet: in de strategie, aan tafel en in de uitvoering.</p>
+        <p class="hero-meta">Van eCommerce-strategie en positionering tot salesstructuur en klantgroei.</p>
+      </div>
+      <div class="hero-actions fade">
+        <a href="#" class="btn btn-flash">Koffie en kennismaken</a>
+        <a href="#" class="btn btn-ghost">Over Bureau DNK</a>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-cue">Scroll</div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">Fractional CCO</span>
+    <span class="marquee-item">eCommerce strategie &amp; executie</span>
+    <span class="marquee-item">Commerciële positionering</span>
+    <span class="marquee-item">Sales structuur</span>
+    <span class="marquee-item">Klantgroei &amp; outreach</span>
+    <span class="marquee-item">Fractional CCO</span>
+    <span class="marquee-item">eCommerce strategie &amp; executie</span>
+    <span class="marquee-item">Commerciële positionering</span>
+    <span class="marquee-item">Sales structuur</span>
+    <span class="marquee-item">Klantgroei &amp; outreach</span>
+  </div>
+</div>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stats-grid">
+    <div class="stat fade">
+      <div class="stat-num"><span class="num" data-to="20">0</span><span class="suf">jr</span></div>
+      <div class="stat-label">aan beide kanten van de tafel</div>
+    </div>
+    <div class="stat fade">
+      <div class="stat-num"><span class="pre">€</span><span class="num" data-to="25">0</span><span class="suf">M</span></div>
+      <div class="stat-label">P&amp;L-verantwoordelijkheid bij Hallmark</div>
+    </div>
+    <div class="stat fade">
+      <div class="stat-num"><span class="num" data-to="110">0</span><span class="suf">%</span></div>
+      <div class="stat-label">commerciële performance bij Dept</div>
+    </div>
+    <div class="stat fade">
+      <div class="stat-num"><span class="pre">+</span><span class="num" data-to="100">0</span><span class="suf">%</span></div>
+      <div class="stat-label">mobiele conversie gerealiseerd</div>
+    </div>
+  </div>
+</section>
+
+<!-- DIENSTEN -->
+<section class="diensten section">
+  <div class="diensten-header">
+    <h2 class="display fade">Hoe ik <em>werk.</em></h2>
+    <p class="body-lg fade">Twintig jaar aan beide kanten van de tafel, als agency-partner, als eCommerce-directeur en als ondernemer. Altijd embedded, nooit aan de zijlijn.</p>
+  </div>
+  <div class="diensten-grid">
+    <a href="#" class="dienst fade">
+      <div class="dienst-nr">01</div>
+      <div class="dienst-title">Fractional CCO of eCommerce Manager</div>
+      <p class="dienst-text">Ik neem een actieve rol in jouw organisatie, als commercieel directeur of als eigenaar van het eCommerce kanaal. Strategisch sturen én operationeel uitvoeren, voor zo lang als nodig.</p>
+    </a>
+    <a href="#" class="dienst fade">
+      <div class="dienst-nr">02</div>
+      <div class="dienst-title">eCommerce strategie &amp; executie</div>
+      <p class="dienst-text">Digitale strategieën die werken voor teams die online groeien. Van platformkeuze en kanaalstrategie tot propositie-ontwikkeling en klantopbouw.</p>
+    </a>
+    <a href="#" class="dienst fade">
+      <div class="dienst-nr">03</div>
+      <div class="dienst-title">Commerciële positionering</div>
+      <p class="dienst-text">Complexe diensten of producten helder en onderscheidend maken. Zodat je doelgroep begrijpt wat je doet, en waarom bij jou.</p>
+    </a>
+    <a href="#" class="dienst fade">
+      <div class="dienst-nr">04</div>
+      <div class="dienst-title">Sales structuur &amp; organisatie</div>
+      <p class="dienst-text">Sales embedden in de organisatie. CRM-implementatie, outreach-automatisering, procesontwerp, én hands-on aan tafel bij de gesprekken die tellen.</p>
+    </a>
+    <a href="#" class="dienst fade">
+      <div class="dienst-nr">05</div>
+      <div class="dienst-title">Klantgroei &amp; outreach</div>
+      <p class="dienst-text">Bestaande klanten uitbouwen en nieuwe winnen. Via gerichte outreach, slimme AI-inzet en effectieve salesgesprekken.</p>
+    </a>
+    <div class="dienst fade" style="display:flex;flex-direction:column;justify-content:center;">
+      <div class="dienst-title" style="font-style:italic;">Laten we kijken waar het schuurt.</div>
+      <a href="#" class="btn btn-line" style="margin-top:24px;align-self:flex-start;">Plan gesprek</a>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section class="impact section">
+  <div class="label fade">Bewezen impact</div>
+  <h2 class="display fade">Ervaring op<br>directieniveau.</h2>
+  <div class="impact-grid">
+    <div class="impact-card fade">
+      <div class="impact-co">Boombrush</div>
+      <div class="impact-role">Managing Director</div>
+      <ul class="impact-list">
+        <li>Rebranding &amp; herpositionering</li>
+        <li>Replatforming naar Shopify</li>
+        <li>B Corp &amp; internationale groei</li>
+        <li>€1M → €2.7M omzet</li>
+      </ul>
+    </div>
+    <div class="impact-card fade">
+      <div class="impact-co">Hallmark Continental Europe</div>
+      <div class="impact-role">eCommerce Manager</div>
+      <ul class="impact-list">
+        <li>+30% omzetgroei</li>
+        <li>−25% acquisitiekosten</li>
+        <li>+100% mobiele conversie</li>
+        <li>€9M → €25M P&amp;L</li>
+      </ul>
+    </div>
+    <div class="impact-card fade">
+      <div class="impact-co">Dept Agency</div>
+      <div class="impact-role">Partner &amp; Head of Business Dev.</div>
+      <ul class="impact-list">
+        <li>&gt;€10M commerciële verantwoordelijkheid</li>
+        <li>110%+ commerciële performance</li>
+        <li>Salesstructuur na overnames</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SPLIT -->
+<div class="split">
+  <div class="split-img">
+    <img src="../../centralpost.png" alt="Central Post Rotterdam">
+  </div>
+  <div class="split-content">
+    <div class="label fade">Beide kanten van de tafel</div>
+    <div class="split-section-title fade">Agency side</div>
+    <p class="split-sub fade">Gebouwd binnen agencies. Ingezet op groei.</p>
+    <ul class="exp-list">
+      <li class="exp-item fade"><span class="exp-name">Dept Agency</span><span class="exp-role">Partner &amp; Head of Business Development</span></li>
+      <li class="exp-item fade"><span class="exp-name">Rox Digital Agency</span><span class="exp-role">Fractional CCO</span></li>
+      <li class="exp-item fade"><span class="exp-name">FRMWRK</span><span class="exp-role">eCommerce Strategy</span></li>
+    </ul>
+    <div class="split-section-title fade">Client side</div>
+    <p class="split-sub fade">P&amp;L-verantwoordelijkheid in eCommerce en scale-ups.</p>
+    <ul class="exp-list">
+      <li class="exp-item fade"><span class="exp-name">Boombrush</span><span class="exp-role">Managing Director — €1M → €2.7M</span></li>
+      <li class="exp-item fade"><span class="exp-name">Hallmark</span><span class="exp-role">eCommerce Manager — €9M → €25M</span></li>
+    </ul>
+  </div>
+</div>
+
+<!-- QUOTE -->
+<div class="quote-section">
+  <div class="quote-inner">
+    <p class="quote-text fade">Steven brengt commerciële scherpte samen met inhoudelijke diepgang. Hij stuurt op <span class="hl">resultaat</span> en geeft eerlijk, onderbouwd advies.</p>
+    <div class="quote-attr fade">Remy — Partner, Dept Agency</div>
+  </div>
+</div>
+
+<!-- LOGO LAB -->
+<section class="logolab section">
+  <div class="logolab-head">
+    <div class="label fade">Het logo-systeem</div>
+    <h2 class="display fade">Eén familie, <em>elke maat.</em></h2>
+    <p class="body-lg fade">Een dramatisch high-contrast woordmerk voor groot, een strak monogram voor klein, en een vermiljoen beeldmerk dat ook op 16 pixels nog knalt.</p>
+  </div>
+  <div class="logolab-grid">
+    <div class="lab-cell">
+      <span class="lab-tag">Woordmerk · groot</span>
+      <div class="lab-wordmark">Bureau DNK<span class="dot">.</span></div>
+    </div>
+    <div class="lab-cell">
+      <span class="lab-tag">Monogram · klein</span>
+      <div class="lab-mono">DNK<span class="dot">.</span></div>
+    </div>
+    <div class="lab-cell">
+      <span class="lab-tag">Favicon · 16–48px</span>
+      <div class="favicon-row">
+        <div class="favicon lg">D</div>
+        <div class="favicon md">D</div>
+        <div class="favicon sm">D</div>
+      </div>
+    </div>
+    <div class="lab-cell flash">
+      <span class="lab-tag">Op accent</span>
+      <div class="lab-wordmark">Bureau DNK<span class="dot">.</span></div>
+    </div>
+    <div class="lab-cell light">
+      <span class="lab-tag">Op licht</span>
+      <div class="lab-wordmark">Bureau DNK<span class="dot">.</span></div>
+    </div>
+    <div class="lab-cell">
+      <span class="lab-tag">In de browsertab</span>
+      <div class="faux-tab"><div class="favicon sm">D</div> Bureau DNK</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="label fade">Laten we kennismaken</div>
+    <h2 class="cta-title fade">Tijd om het<br><em>scherper</em> te maken?</h2>
+    <p class="cta-sub fade">We kijken samen waar de grootste commerciële hefboom zit, van strategie tot uitvoering.</p>
+    <a href="#" class="btn btn-flash fade">Koffie en kennismaken</a>
+  </div>
+</section>
+
+<!-- THEMA-SCHAKELAAR (concept) -->
+<a class="theme-switch" href="../richting-d-licht/" aria-label="Bekijk de lichte variant">◐ Lichte variant</a>
+
+<!-- ACCENT-KIEZER (alleen in concept, niet in productie) -->
+<div class="accent-switch" aria-label="Kies een accentkleur">
+  <span>Accent</span>
+  <button class="accent-dot active" style="background:#2f4cff" data-c="#2f4cff" aria-label="Kobalt"></button>
+  <button class="accent-dot" style="background:#10a06a" data-c="#10a06a" aria-label="Emerald"></button>
+  <button class="accent-dot" style="background:#e0a23a" data-c="#e0a23a" aria-label="Amber"></button>
+  <button class="accent-dot" style="background:#d8456b" data-c="#d8456b" aria-label="Magenta"></button>
+  <button class="accent-dot" style="background:#ff3b1f" data-c="#ff3b1f" aria-label="Vermiljoen"></button>
+  <button class="accent-dot" style="background:#0f8d86" data-c="#0f8d86" aria-label="Petrol"></button>
+  <button class="accent-dot" style="background:#6b35e0" data-c="#6b35e0" aria-label="Violet"></button>
+  <button class="accent-dot" style="background:#c75434" data-c="#c75434" aria-label="Terracotta"></button>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-word">Bureau DNK<span class="dot">.</span></div>
+  <div class="footer-center">Bureau DNK — De Nieuwe Kamer B.V. · Rotterdam</div>
+  <div class="footer-right"><a href="../">← Terug naar richtingen</a></div>
+</footer>
+
+<script>
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
+
+// Hero in op load
+requestAnimationFrame(() => document.getElementById('hero').classList.add('is-in'));
+
+// Reveal + tellende cijfers via IntersectionObserver
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('is-in');
+    e.target.querySelectorAll && e.target.querySelectorAll('.num').forEach(countUp);
+    io.unobserve(e.target);
+  });
+}, { threshold: 0.18 });
+document.querySelectorAll('.fade, .stat').forEach(el => io.observe(el));
+
+function countUp(el) {
+  const to = parseInt(el.dataset.to, 10);
+  if (reduce || !to) { el.textContent = to || el.textContent; return; }
+  const dur = 1300, t0 = performance.now();
+  function tick(t) {
+    const p = Math.min((t - t0) / dur, 1);
+    const eased = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.round(to * eased);
+    if (p < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+// Schaduwwoord- en foto-parallax
+const ghost = document.getElementById('ghost');
+const heroimg = document.getElementById('heroimg');
+if (!reduce) {
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (y < window.innerHeight * 1.1) {
+      if (ghost)   ghost.style.transform   = `translate(calc(-50% + ${y * -0.14}px), calc(-50% + ${y * 0.34}px))`;
+      if (heroimg) heroimg.style.transform = `scale(${1 + y * 0.00005})`;
+    }
+  }, { passive: true });
+}
+
+// Accent-kiezer (concept-tool, live kleurwissel)
+document.querySelectorAll('.accent-dot').forEach(dot => {
+  dot.addEventListener('click', () => {
+    document.documentElement.style.setProperty('--flash', dot.dataset.c);
+    document.querySelectorAll('.accent-dot').forEach(d => d.classList.remove('active'));
+    dot.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

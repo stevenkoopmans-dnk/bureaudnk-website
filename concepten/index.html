@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Design-richtingen — Bureau DNK</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Instrument+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #14201f; color: #f5f3ee;
+    font-family: 'Instrument Sans', sans-serif; font-weight: 300;
+    -webkit-font-smoothing: antialiased; min-height: 100vh;
+    padding: 7vw 6vw;
+  }
+  .intro { max-width: 720px; margin-bottom: 64px; }
+  .eyebrow {
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(245,243,238,0.4); margin-bottom: 28px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .eyebrow::before { content: ''; width: 40px; height: 1px; background: rgba(245,243,238,0.3); }
+  h1 {
+    font-family: 'Fraunces', serif; font-weight: 400;
+    font-size: clamp(34px, 5vw, 60px); line-height: 1.1;
+    letter-spacing: -0.01em; margin-bottom: 24px;
+  }
+  .intro p { color: rgba(245,243,238,0.55); font-size: 16px; line-height: 1.7; max-width: 560px; }
+  .grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  .feature {
+    display: grid; grid-template-columns: 1.1fr 1fr; gap: 0; margin-bottom: 24px;
+    border: 1px solid #ff3b1f; text-decoration: none; color: inherit;
+    transition: transform .3s;
+    background: linear-gradient(180deg, rgba(255,59,31,0.08), rgba(255,59,31,0.02));
+  }
+  .feature:hover { transform: translateY(-4px); }
+  .feature-l { padding: 48px 44px; display: flex; flex-direction: column; }
+  .feature-r { padding: 48px 44px; border-left: 1px solid rgba(255,59,31,0.3); display: flex; flex-direction: column; justify-content: center; }
+  .feature-badge { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #ff3b1f; margin-bottom: 22px; display: inline-flex; align-items: center; gap: 10px; }
+  .feature-badge::before { content: ''; width: 26px; height: 2px; background: #ff3b1f; }
+  .feature-name { font-family: 'Bodoni Moda', serif; font-weight: 600; font-size: clamp(38px, 4.5vw, 60px); line-height: 0.95; letter-spacing: -0.02em; margin-bottom: 16px; }
+  .feature-name em { font-style: italic; color: #ff3b1f; }
+  .feature-desc { color: rgba(245,243,238,0.6); font-size: 15px; line-height: 1.7; margin-bottom: auto; }
+  .feature-go { margin-top: 30px; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #f5f3ee; display: flex; align-items: center; gap: 10px; }
+  .feature-go::after { content: '→'; font-size: 16px; transition: transform .2s; }
+  .feature:hover .feature-go::after { transform: translateX(5px); }
+  .feature-points { list-style: none; }
+  .feature-points li { font-size: 14px; color: rgba(245,243,238,0.7); padding: 11px 0; border-bottom: 1px solid rgba(245,243,238,0.1); display: flex; gap: 12px; }
+  .feature-points li:last-child { border-bottom: none; }
+  .feature-points li::before { content: '✦'; color: #ff3b1f; font-size: 0.8em; }
+  .card {
+    background: rgba(245,243,238,0.03); border: 1px solid rgba(245,243,238,0.1);
+    padding: 40px 34px; text-decoration: none; color: inherit;
+    display: flex; flex-direction: column; min-height: 320px;
+    transition: background .3s, transform .3s, border-color .3s;
+  }
+  .card:hover { background: rgba(245,243,238,0.06); transform: translateY(-4px); border-color: rgba(245,243,238,0.25); }
+  .card-nr { font-size: 11px; letter-spacing: 0.16em; color: rgba(245,243,238,0.35); margin-bottom: 28px; }
+  .card-name { font-size: clamp(26px, 2.4vw, 34px); line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 16px; }
+  .card-a .card-name { font-family: 'Fraunces', serif; font-weight: 400; }
+  .card-b .card-name { font-family: 'Newsreader', serif; font-weight: 400; }
+  .card-c .card-name { font-family: 'Bodoni Moda', serif; font-weight: 400; }
+  .card-desc { color: rgba(245,243,238,0.5); font-size: 14px; line-height: 1.65; margin-bottom: auto; }
+  .card-go {
+    margin-top: 32px; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(245,243,238,0.8); display: flex; align-items: center; gap: 10px;
+  }
+  .card-go::after { content: '→'; font-size: 16px; transition: transform .2s; }
+  .card:hover .card-go::after { transform: translateX(5px); }
+  .swatch { display: flex; gap: 6px; margin-bottom: 28px; }
+  .swatch span { width: 22px; height: 22px; border-radius: 50%; border: 1px solid rgba(245,243,238,0.1); }
+  .note { margin-top: 56px; font-size: 13px; color: rgba(245,243,238,0.35); max-width: 620px; line-height: 1.7; }
+  .sub-head { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(245,243,238,0.4); margin: 8px 0 20px; }
+  @media (max-width: 860px) { .grid { grid-template-columns: 1fr; } .feature { grid-template-columns: 1fr; } .feature-r { border-left: none; border-top: 1px solid rgba(255,59,31,0.3); } body { padding: 14vw 7vw; } }
+</style>
+</head>
+<body>
+  <div class="intro">
+    <div class="eyebrow">Bureau DNK · Design-verkenning</div>
+    <h1>Vier richtingen.<br>Eén keuze.</h1>
+    <p>Bovenaan de gedurfde nieuwe richting op basis van je feedback: meer lef, meer beweging, één knalkleur. Daaronder de drie rustigere editorial-richtingen. Klik ze door op desktop en mobiel. Kies wat je raakt, daarna rollen we die uit over de hele site.</p>
+  </div>
+
+  <a class="feature" href="richting-d/">
+    <div class="feature-l">
+      <span class="feature-badge">Nieuw · op basis van je feedback</span>
+      <div class="feature-name">Statement <em>/ Kinetic</em></div>
+      <p class="feature-desc">Meer lef. De Bodoni-typografie van richting C, maar nu echt groot en in beweging: koppen die van achter een masker omhoog rollen, een reuze schaduwwoord dat meebeweegt, cijfers die optellen, en één bewuste accentkleur. Kom je in donker én een frisse lichte variant tegen, met een live kleur- en thema-kiezer in de hoek.</p>
+      <span class="feature-go">Bekijk de WOW-richting</span>
+    </div>
+    <div class="feature-r">
+      <ul class="feature-points">
+        <li>High-contrast Bodoni, gigantisch ingezet</li>
+        <li>Kinetiek: mask-reveals, parallax, tellende cijfers</li>
+        <li>Live accent-kiezer: kobalt, emerald, amber, magenta</li>
+        <li>Donkere én frisse lichte variant</li>
+      </ul>
+    </div>
+  </a>
+
+  <p class="sub-head">Of de drie eerdere, rustigere richtingen</p>
+
+  <div class="grid">
+    <a class="card card-a" href="richting-a/">
+      <div class="card-nr">Richting A</div>
+      <div class="swatch"><span style="background:#14201f"></span><span style="background:#f5f3ee"></span><span style="background:#b9874e"></span></div>
+      <div class="card-name">Editorial Sharp</div>
+      <p class="card-desc">Het vertrouwde DNA, maar zelfverzekerd. Karaktervolle serif (Fraunces), dieper ink, een warme messing-accent. Oversized hero. Vertrouwd, maar scherper.</p>
+      <span class="card-go">Bekijk richting A</span>
+    </a>
+
+    <a class="card card-b" href="richting-b/">
+      <div class="card-nr">Richting B</div>
+      <div class="swatch"><span style="background:#16151a"></span><span style="background:#fbfaf8"></span><span style="background:#7c2d3a"></span></div>
+      <div class="card-name">Refined Premium</div>
+      <p class="card-desc">Koeler en eigentijds. Schone off-white, bijna-zwart, één ingetogen oxblood-accent. Contemporary serif (Newsreader) met grotesk. Galerie-achtig, rustig luxe.</p>
+      <span class="card-go">Bekijk richting B</span>
+    </a>
+
+    <a class="card card-c" href="richting-c/">
+      <div class="card-nr">Richting C</div>
+      <div class="swatch"><span style="background:#101312"></span><span style="background:#f2ece1"></span><span style="background:#e8e1d4"></span></div>
+      <div class="card-name">Bold Serif</div>
+      <p class="card-desc">Valt het hardst op, blijft elegant. Dramatische high-contrast serif (Bodoni), donkere full-bleed statement-secties, maximaal contrast. Premium en nadrukkelijk.</p>
+      <span class="card-go">Bekijk richting C</span>
+    </a>
+  </div>
+
+  <p class="note">Deze concepten staan los van de live site en raken niets aan productie. Het logo is hier typografisch uitgewerkt zodat je de richting kunt beoordelen, het definitieve vector-woordmerk (woordmerk, monogram, favicon) tekenen we uit zodra je gekozen hebt.</p>
+</body>
+</html>

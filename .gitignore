@@ -1,1 +1,13 @@
 .claude/
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Vertrouwelijk — nooit publiek deployen (Cloudflare serveert alle repo-bestanden)
+Administratie/
+bijlagen/
+docs/bedrijfsgegevens.md
+
+# Lokale dev-server (alleen voor lokaal testen)
+serve.py

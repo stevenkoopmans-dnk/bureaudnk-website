@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Richting B — Refined Premium — Bureau DNK</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   RICHTING B — REFINED PREMIUM
+   Newsreader (display) + Inter (body)
+   Koel off-white, bijna-zwart, spaarzame oxblood-accent
+   Galerie-achtig: veel witruimte, dunne hairlines, smallcaps
+   ============================================================ */
+:root {
+  --ink:    #16151a;
+  --ink-2:  #201f25;
+  --paper:  #fbfaf8;
+  --warm:   #f1efeb;
+  --warmer: #e9e6e0;
+  --mid:    #6a6873;
+  --light:  #aaa7af;
+  --accent: #7c2d3a;
+  --line:   rgba(22,21,26,0.12);
+  --serif:  'Newsreader', Georgia, serif;
+  --sans:   'Inter', sans-serif;
+  --ease:   cubic-bezier(0.16, 1, 0.3, 1);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--paper); color: var(--ink);
+  font-family: var(--sans); font-weight: 300; line-height: 1.7;
+  -webkit-font-smoothing: antialiased; overflow-x: hidden;
+}
+.label {
+  font-family: var(--sans); font-size: 11px; font-weight: 500;
+  letter-spacing: 0.24em; text-transform: uppercase; color: var(--mid);
+  display: flex; align-items: center; gap: 14px; margin-bottom: 28px;
+}
+.label::before { content: ''; width: 24px; height: 1px; background: var(--accent); }
+.display {
+  font-family: var(--serif); font-size: clamp(34px, 3.4vw, 52px);
+  font-weight: 400; line-height: 1.12; letter-spacing: -0.01em;
+}
+.display em { font-style: italic; font-weight: 400; color: var(--accent); }
+.body-lg { font-size: 17px; font-weight: 300; color: var(--mid); line-height: 1.85; max-width: 500px; margin-top: 22px; }
+
+.btn {
+  display: inline-block; font-family: var(--sans);
+  font-size: 11px; font-weight: 500; letter-spacing: 0.14em;
+  text-transform: uppercase; text-decoration: none;
+  padding: 17px 40px; transition: opacity .2s, background .3s, color .3s;
+}
+.btn-dark { color: var(--paper); background: var(--ink); border: 1px solid var(--ink); }
+.btn-dark:hover { background: transparent; color: var(--ink); }
+.btn-ghost { color: var(--mid); background: none; padding: 17px 0; display: inline-flex; align-items: center; gap: 10px; }
+.btn-ghost::after { content: '→'; font-size: 17px; transition: transform .2s; }
+.btn-ghost:hover { color: var(--accent); }
+.btn-ghost:hover::after { transform: translateX(4px); }
+
+/* NAV */
+nav#nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 30px 64px; background: transparent;
+  transition: background .4s var(--ease), padding .5s var(--ease), box-shadow .4s var(--ease);
+}
+nav#nav.scrolled { padding: 18px 64px; background: rgba(251,250,248,0.92); backdrop-filter: blur(14px); box-shadow: 0 1px 0 var(--line); }
+.wordmark { font-family: var(--sans); font-weight: 500; font-size: 14px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--ink); text-decoration: none; line-height: 1; }
+.wordmark .accent { color: var(--accent); }
+.nav-links { display: flex; gap: 46px; list-style: none; }
+.nav-links a { font-family: var(--sans); font-size: 11px; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; color: var(--ink); opacity: 0.5; transition: opacity .2s; }
+.nav-links a:hover { opacity: 1; }
+.nav-cta { font-family: var(--sans); font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; color: var(--ink); border: 1px solid var(--line); padding: 12px 26px; transition: border-color .3s, color .3s; }
+.nav-cta:hover { border-color: var(--accent); color: var(--accent); }
+
+.section { padding: 160px 64px; }
+
+/* HERO — editorial, asymmetrisch, veel lucht */
+.hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 160px 64px 90px; position: relative; }
+.hero-eyebrow { font-family: var(--sans); font-size: 11px; font-weight: 500; letter-spacing: 0.24em; text-transform: uppercase; color: var(--accent); margin-bottom: 40px; }
+.hero-title { font-family: var(--serif); font-size: clamp(54px, 8vw, 128px); font-weight: 300; line-height: 0.98; letter-spacing: -0.035em; margin-bottom: 44px; max-width: 14ch; }
+.hero-title em { font-style: italic; font-weight: 400; color: var(--accent); }
+.hero-bottom { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: end; border-top: 1px solid var(--line); padding-top: 40px; }
+.hero-sub { font-size: 18px; font-weight: 300; color: var(--mid); max-width: 460px; line-height: 1.8; }
+.hero-meta { font-size: 13px; color: var(--light); margin-top: 14px; }
+.hero-actions { display: flex; align-items: center; gap: 32px; justify-content: flex-end; }
+@media (max-width: 960px) { .hero-actions { justify-content: flex-start; } }
+
+/* MARQUEE — minimaal, hairline */
+.marquee-wrap { background: var(--paper); padding: 26px 0; overflow: hidden; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.marquee-track { display: flex; gap: 48px; width: max-content; animation: marquee 30s linear infinite; }
+.marquee-item { font-family: var(--serif); font-size: 18px; font-style: italic; color: var(--mid); white-space: nowrap; display: flex; align-items: center; gap: 48px; font-weight: 300; }
+.marquee-item::after { content: '/'; color: var(--accent); font-style: normal; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* DIENSTEN */
+.diensten { background: var(--paper); }
+.diensten-header { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-bottom: 80px; align-items: end; }
+.diensten-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
+.dienst { padding: 48px 36px 48px 0; border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); padding-left: 36px; transition: background .3s; position: relative; text-decoration: none; color: inherit; display: block; }
+.dienst:nth-child(3n) { border-right: none; }
+.dienst:hover { background: var(--warm); }
+.dienst-nr { font-family: var(--sans); font-size: 11px; letter-spacing: 0.16em; color: var(--accent); margin-bottom: 24px; }
+.dienst-title { font-family: var(--serif); font-size: 25px; font-weight: 400; line-height: 1.2; margin-bottom: 16px; letter-spacing: -0.01em; }
+.dienst-text { font-size: 14px; color: var(--mid); line-height: 1.75; font-weight: 300; }
+
+/* IMPACT */
+.impact { background: var(--ink); color: var(--paper); }
+.impact .label { color: rgba(251,250,248,0.5); }
+.impact .label::before { background: var(--accent); }
+.impact .display { color: var(--paper); }
+.impact .body-lg { color: rgba(251,250,248,0.5); }
+.impact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(251,250,248,0.1); margin-top: 64px; border: 1px solid rgba(251,250,248,0.1); }
+.impact-card { padding: 54px 42px; background: var(--ink); transition: background .3s; }
+.impact-card:hover { background: var(--ink-2); }
+.impact-co { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(251,250,248,0.4); margin-bottom: 12px; }
+.impact-role { font-family: var(--serif); font-size: 26px; font-style: italic; font-weight: 400; color: var(--paper); margin-bottom: 28px; line-height: 1.25; }
+.impact-list { list-style: none; }
+.impact-list li { font-size: 14px; color: rgba(251,250,248,0.5); font-weight: 300; padding: 12px 0; border-bottom: 1px solid rgba(251,250,248,0.08); display: flex; gap: 12px; align-items: flex-start; line-height: 1.5; }
+.impact-list li:last-child { border-bottom: none; }
+.impact-list li::before { content: ''; width: 5px; height: 5px; margin-top: 8px; background: var(--accent); border-radius: 50%; flex-shrink: 0; }
+
+/* SPLIT */
+.split { display: grid; grid-template-columns: 1fr 1fr; min-height: 580px; }
+.split-img { overflow: hidden; position: relative; }
+.split-img img { width: 100%; height: 100%; object-fit: cover; object-position: center; filter: grayscale(0.4) brightness(0.96) contrast(1.02); transition: transform .8s var(--ease), filter .8s var(--ease); }
+.split:hover .split-img img { transform: scale(1.03); filter: grayscale(0) brightness(0.96); }
+.split-content { background: var(--warm); padding: 90px 64px; display: flex; flex-direction: column; justify-content: center; }
+.split-content .label { margin-bottom: 30px; }
+.split-section-title { font-family: var(--serif); font-size: clamp(24px, 2vw, 32px); font-weight: 400; margin-bottom: 8px; letter-spacing: -0.01em; }
+.split-sub { font-size: 13px; color: var(--mid); margin-bottom: 26px; font-weight: 300; line-height: 1.6; }
+.exp-list { list-style: none; margin-bottom: 44px; }
+.exp-item { padding: 16px 0; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: baseline; gap: 20px; }
+.exp-item:last-child { border-bottom: none; }
+.exp-name { font-size: 15px; font-weight: 500; color: var(--ink); white-space: nowrap; }
+.exp-role { font-size: 13px; color: var(--mid); font-weight: 300; text-align: right; }
+
+/* QUOTE */
+.quote-section { padding: 150px 64px; background: var(--paper); display: flex; align-items: center; justify-content: center; }
+.quote-inner { max-width: 860px; text-align: center; }
+.quote-mark { display: block; width: 32px; height: 1px; background: var(--accent); margin: 0 auto 40px; }
+.quote-text { font-family: var(--serif); font-size: clamp(26px, 3.2vw, 46px); font-weight: 300; font-style: italic; line-height: 1.38; letter-spacing: -0.015em; color: var(--ink); margin-bottom: 40px; }
+.quote-attr { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--light); }
+
+/* LOGO LAB */
+.logolab { background: var(--warm); border-top: 1px solid var(--line); }
+.logolab-head { margin-bottom: 60px; }
+.logolab-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.lab-cell { background: var(--paper); padding: 52px 40px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; min-height: 210px; }
+.lab-cell.dark { background: var(--ink); }
+.lab-tag { font-family: var(--sans); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--light); }
+.lab-cell.dark .lab-tag { color: rgba(251,250,248,0.4); }
+.lab-wordmark { font-family: var(--sans); font-weight: 500; font-size: 22px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--ink); }
+.lab-wordmark .accent { color: var(--accent); }
+.lab-cell.dark .lab-wordmark { color: var(--paper); }
+.lab-mono { font-family: var(--serif); font-weight: 400; font-style: italic; font-size: 50px; letter-spacing: -0.01em; color: var(--ink); }
+.lab-cell.dark .lab-mono { color: var(--paper); }
+.favicon-row { display: flex; align-items: flex-end; gap: 20px; }
+.favicon { background: var(--accent); color: var(--paper); font-family: var(--serif); font-style: italic; font-weight: 400; display: flex; align-items: center; justify-content: center; line-height: 1; }
+.favicon.lg { width: 48px; height: 48px; font-size: 24px; }
+.favicon.md { width: 32px; height: 32px; font-size: 16px; }
+.favicon.sm { width: 16px; height: 16px; font-size: 9px; }
+.faux-tab { display: inline-flex; align-items: center; gap: 8px; background: var(--warmer); padding: 9px 16px 9px 12px; border-radius: 8px 8px 0 0; font-size: 12px; color: var(--mid); }
+
+/* CTA */
+.cta-section { padding: 170px 64px; text-align: center; position: relative; overflow: hidden; background: var(--paper); }
+.cta-section .label { justify-content: center; margin-bottom: 28px; }
+.cta-title { font-family: var(--serif); font-size: clamp(44px, 6vw, 92px); font-weight: 300; line-height: 1.02; letter-spacing: -0.03em; max-width: 760px; margin: 0 auto 24px; }
+.cta-title em { font-style: italic; color: var(--accent); }
+.cta-sub { font-size: 16px; color: var(--mid); font-weight: 300; margin-bottom: 56px; }
+
+/* FOOTER */
+footer { background: var(--ink); padding: 60px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+.footer-word { font-family: var(--sans); font-weight: 500; font-size: 14px; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(251,250,248,0.85); }
+.footer-word .accent { color: var(--accent); }
+.footer-center { font-size: 12px; color: rgba(251,250,248,0.3); letter-spacing: 0.04em; text-align: center; }
+.footer-right { font-size: 12px; color: rgba(251,250,248,0.3); }
+.footer-right a { color: inherit; text-decoration: none; }
+.footer-right a:hover { color: rgba(251,250,248,0.7); }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(36px); transition: opacity 1s var(--ease), transform 1s var(--ease); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-left { opacity: 0; transform: translateX(-36px); transition: opacity 1s var(--ease), transform 1s var(--ease); }
+.reveal-left.visible { opacity: 1; transform: translateX(0); }
+
+@media (max-width: 960px) {
+  nav#nav, nav#nav.scrolled { padding: 22px 24px; }
+  .nav-links { display: none; }
+  .section { padding: 90px 24px; }
+  .hero { padding: 124px 24px 64px; min-height: auto; }
+  .hero-title { font-size: 46px; line-height: 1.0; }
+  .hero-bottom { grid-template-columns: 1fr; gap: 32px; }
+  .diensten-header { grid-template-columns: 1fr; gap: 24px; }
+  .diensten-grid { grid-template-columns: 1fr; }
+  .dienst { border-right: none; }
+  .impact-grid { grid-template-columns: 1fr; }
+  .split { grid-template-columns: 1fr; }
+  .split-img { height: 320px; }
+  .split-content { padding: 56px 24px; }
+  .quote-section { padding: 90px 24px; }
+  .logolab-grid { grid-template-columns: 1fr; }
+  .cta-section { padding: 110px 24px; }
+  footer { padding: 44px 24px; flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="../" class="wordmark">Bureau DN<span class="accent">K</span></a>
+  <ul class="nav-links">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Over</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+  <a href="#" class="nav-cta">Plan gesprek</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Rotterdam · Commerciële regie</div>
+  <h1 class="hero-title">Commerciële groei. <em>Zonder ruis.</em></h1>
+  <div class="hero-bottom">
+    <div>
+      <p class="hero-sub">Ik help digital agencies en eCommerce bedrijven commercieel scherper worden. Niet als adviseur die rapporten schrijft, maar als iemand die meedoet: in de strategie, aan tafel en in de uitvoering.</p>
+      <p class="hero-meta">Van eCommerce-strategie en positionering tot salesstructuur en klantgroei.</p>
+    </div>
+    <div class="hero-actions">
+      <a href="#" class="btn btn-ghost">Over Bureau DNK</a>
+      <a href="#" class="btn btn-dark">Koffie en kennismaken</a>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">Fractional CCO</span>
+    <span class="marquee-item">eCommerce strategie &amp; executie</span>
+    <span class="marquee-item">Commerciële positionering</span>
+    <span class="marquee-item">Sales structuur &amp; organisatie</span>
+    <span class="marquee-item">Klantgroei &amp; outreach</span>
+    <span class="marquee-item">Fractional eCommerce Manager</span>
+    <span class="marquee-item">Fractional CCO</span>
+    <span class="marquee-item">eCommerce strategie &amp; executie</span>
+    <span class="marquee-item">Commerciële positionering</span>
+    <span class="marquee-item">Sales structuur &amp; organisatie</span>
+    <span class="marquee-item">Klantgroei &amp; outreach</span>
+    <span class="marquee-item">Fractional eCommerce Manager</span>
+  </div>
+</div>
+
+<!-- DIENSTEN -->
+<section class="diensten section">
+  <div class="diensten-header">
+    <div>
+      <div class="label reveal">Diensten</div>
+      <h2 class="display reveal">Hoe ik <em>werk.</em></h2>
+    </div>
+    <p class="body-lg reveal">Twintig jaar aan beide kanten van de tafel, als agency-partner, als eCommerce-directeur en als ondernemer. Altijd embedded, nooit aan de zijlijn.</p>
+  </div>
+  <div class="diensten-grid">
+    <a href="#" class="dienst reveal">
+      <div class="dienst-nr">01</div>
+      <div class="dienst-title">Fractional CCO of eCommerce Manager</div>
+      <p class="dienst-text">Ik neem een actieve rol in jouw organisatie, als commercieel directeur of als eigenaar van het eCommerce kanaal. Strategisch sturen én operationeel uitvoeren, voor zo lang als nodig.</p>
+    </a>
+    <a href="#" class="dienst reveal">
+      <div class="dienst-nr">02</div>
+      <div class="dienst-title">eCommerce strategie &amp; executie</div>
+      <p class="dienst-text">Digitale strategieën die werken voor teams die online groeien. Van platformkeuze en kanaalstrategie tot propositie-ontwikkeling en klantopbouw.</p>
+    </a>
+    <a href="#" class="dienst reveal">
+      <div class="dienst-nr">03</div>
+      <div class="dienst-title">Commerciële positionering</div>
+      <p class="dienst-text">Complexe diensten of producten helder en onderscheidend maken. Zodat je doelgroep begrijpt wat je doet, en waarom bij jou.</p>
+    </a>
+    <a href="#" class="dienst reveal">
+      <div class="dienst-nr">04</div>
+      <div class="dienst-title">Sales structuur &amp; organisatie</div>
+      <p class="dienst-text">Sales embedden in de organisatie. CRM-implementatie, outreach-automatisering, procesontwerp, én hands-on aan tafel bij de gesprekken die tellen.</p>
+    </a>
+    <a href="#" class="dienst reveal">
+      <div class="dienst-nr">05</div>
+      <div class="dienst-title">Klantgroei &amp; outreach</div>
+      <p class="dienst-text">Bestaande klanten uitbouwen en nieuwe winnen. Via gerichte outreach, slimme AI-inzet en effectieve salesgesprekken.</p>
+    </a>
+    <div class="dienst reveal" style="display:flex;flex-direction:column;justify-content:center;">
+      <div class="dienst-title" style="font-style:italic;">Laten we kijken waar het schuurt.</div>
+      <a href="#" class="btn btn-dark" style="margin-top:24px;align-self:flex-start;">Plan gesprek</a>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section class="impact section">
+  <div class="label reveal">Bewezen impact</div>
+  <h2 class="display reveal" style="color:var(--paper);">Ervaring op<br>directieniveau.</h2>
+  <p class="body-lg reveal">Geen theorie. Aantoonbare resultaten in agencies, eCommerce en scale-ups.</p>
+  <div class="impact-grid">
+    <div class="impact-card reveal">
+      <div class="impact-co">Boombrush</div>
+      <div class="impact-role">Managing Director</div>
+      <ul class="impact-list">
+        <li>Rebranding &amp; herpositionering</li>
+        <li>Replatforming naar Shopify</li>
+        <li>B Corp &amp; internationale groei</li>
+        <li>€1M → €2.7M omzet</li>
+      </ul>
+    </div>
+    <div class="impact-card reveal">
+      <div class="impact-co">Hallmark Continental Europe</div>
+      <div class="impact-role">eCommerce Manager</div>
+      <ul class="impact-list">
+        <li>+30% omzetgroei</li>
+        <li>−25% acquisitiekosten</li>
+        <li>+100% mobiele conversie</li>
+        <li>€9M → €25M P&amp;L</li>
+      </ul>
+    </div>
+    <div class="impact-card reveal">
+      <div class="impact-co">Dept Agency</div>
+      <div class="impact-role">Partner &amp; Head of Business Dev.</div>
+      <ul class="impact-list">
+        <li>&gt;€10M commerciële verantwoordelijkheid</li>
+        <li>110%+ commerciële performance</li>
+        <li>Salesstructuur na overnames</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SPLIT -->
+<div class="split">
+  <div class="split-img reveal-left">
+    <img src="../../centralpost.png" alt="Central Post Rotterdam">
+  </div>
+  <div class="split-content">
+    <div class="label reveal">Beide kanten van de tafel</div>
+    <div class="split-section-title reveal">Agency side</div>
+    <p class="split-sub reveal">Gebouwd binnen agencies. Ingezet op groei.</p>
+    <ul class="exp-list">
+      <li class="exp-item reveal"><span class="exp-name">Dept Agency</span><span class="exp-role">Partner &amp; Head of Business Development</span></li>
+      <li class="exp-item reveal"><span class="exp-name">Rox Digital Agency</span><span class="exp-role">Fractional CCO</span></li>
+      <li class="exp-item reveal"><span class="exp-name">FRMWRK</span><span class="exp-role">eCommerce Strategy</span></li>
+    </ul>
+    <div class="split-section-title reveal">Client side</div>
+    <p class="split-sub reveal">P&amp;L-verantwoordelijkheid in eCommerce en scale-ups.</p>
+    <ul class="exp-list">
+      <li class="exp-item reveal"><span class="exp-name">Boombrush</span><span class="exp-role">Managing Director — €1M → €2.7M</span></li>
+      <li class="exp-item reveal"><span class="exp-name">Hallmark</span><span class="exp-role">eCommerce Manager — €9M → €25M</span></li>
+    </ul>
+  </div>
+</div>
+
+<!-- QUOTE -->
+<div class="quote-section">
+  <div class="quote-inner">
+    <span class="quote-mark reveal"></span>
+    <p class="quote-text reveal">Steven brengt commerciële scherpte samen met inhoudelijke diepgang. Hij stuurt op resultaat en geeft eerlijk, onderbouwd advies.</p>
+    <div class="quote-attr reveal">Remy — Partner, Dept Agency</div>
+  </div>
+</div>
+
+<!-- LOGO LAB -->
+<section class="logolab section">
+  <div class="logolab-head">
+    <div class="label reveal">Het logo-systeem</div>
+    <h2 class="display reveal">Eén familie, <em>elke maat.</em></h2>
+    <p class="body-lg reveal">Een strak letter-gespatieerd woordmerk voor groot, een verfijnd italic-monogram voor klein, en een oxblood beeldmerk voor de favicon.</p>
+  </div>
+  <div class="logolab-grid">
+    <div class="lab-cell">
+      <span class="lab-tag">Woordmerk · groot</span>
+      <div class="lab-wordmark">Bureau DN<span class="accent">K</span></div>
+    </div>
+    <div class="lab-cell">
+      <span class="lab-tag">Monogram · klein</span>
+      <div class="lab-mono">DNK</div>
+    </div>
+    <div class="lab-cell">
+      <span class="lab-tag">Favicon · 16–48px</span>
+      <div class="favicon-row">
+        <div class="favicon lg">D</div>
+        <div class="favicon md">D</div>
+        <div class="favicon sm">D</div>
+      </div>
+    </div>
+    <div class="lab-cell dark">
+      <span class="lab-tag">Op donker</span>
+      <div class="lab-wordmark">Bureau DN<span class="accent">K</span></div>
+    </div>
+    <div class="lab-cell dark">
+      <span class="lab-tag">Monogram op donker</span>
+      <div class="lab-mono">DNK</div>
+    </div>
+    <div class="lab-cell">
+      <span class="lab-tag">In de browsertab</span>
+      <div class="faux-tab"><div class="favicon sm">D</div> Bureau DNK</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="label reveal">Laten we kennismaken</div>
+  <h2 class="cta-title reveal">Tijd om het <em>scherper</em> te maken?</h2>
+  <p class="cta-sub reveal">We kijken samen waar de grootste commerciële hefboom zit, van strategie tot uitvoering.</p>
+  <a href="#" class="btn btn-dark reveal">Koffie en kennismaken</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-word">Bureau DN<span class="accent">K</span></div>
+  <div class="footer-center">Bureau DNK — De Nieuwe Kamer B.V. · Rotterdam</div>
+  <div class="footer-right"><a href="../">← Terug naar richtingen</a></div>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), (i % 4) * 80); io.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal, .reveal-left').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

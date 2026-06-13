@@ -5,9 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Algemene voorwaarden — Bureau DNK</title>
 <meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Instrument+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;1,6..96,400;1,6..96,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Instrument+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
 <script src="/main.js" defer></script>
 <!-- Google Tag Manager -->
@@ -17,101 +20,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-5SL2MLZ4');</script>
 <!-- End Google Tag Manager -->
-<style>
-.voorwaarden-body {
-  max-width: 720px;
-  padding: 80px 64px 120px;
-}
-.voorwaarden-body h2 {
-  font-family: var(--serif);
-  font-size: clamp(20px, 1.6vw, 26px);
-  font-weight: 400;
-  margin-top: 56px;
-  margin-bottom: 16px;
-  letter-spacing: -0.01em;
-}
-.voorwaarden-body h2:first-child { margin-top: 0; }
-.voorwaarden-body p {
-  font-size: 16px;
-  font-weight: 300;
-  color: var(--mid);
-  line-height: 1.85;
-  margin-bottom: 16px;
-}
-.voorwaarden-body p strong { font-weight: 500; color: var(--ink); }
-.voorwaarden-body a { color: var(--ink); }
-.voorwaarden-body a:hover { opacity: 0.6; }
-.voorwaarden-body ol {
-  list-style: none;
-  padding: 0;
-  margin-bottom: 16px;
-  counter-reset: artikel-item;
-}
-.voorwaarden-body ol > li {
-  font-size: 16px;
-  font-weight: 300;
-  color: var(--mid);
-  line-height: 1.85;
-  padding-left: 28px;
-  position: relative;
-  margin-bottom: 8px;
-  counter-increment: artikel-item;
-}
-.voorwaarden-body ol > li::before {
-  content: counter(artikel-item) ".";
-  position: absolute;
-  left: 0;
-  color: var(--light);
-  font-size: 13px;
-  font-variant-numeric: tabular-nums;
-  top: 3px;
-}
-.voorwaarden-body ol.sub-alpha {
-  counter-reset: sub-item;
-  margin-top: 8px;
-  margin-bottom: 0;
-}
-.voorwaarden-body ol.sub-alpha > li {
-  counter-increment: sub-item;
-  padding-left: 24px;
-  margin-bottom: 4px;
-}
-.voorwaarden-body ol.sub-alpha > li::before {
-  content: counter(sub-item, lower-alpha) ".";
-}
-.voorwaarden-meta {
-  background: var(--warm);
-  border-radius: 2px;
-  padding: 28px 32px;
-  margin-bottom: 56px;
-  font-size: 14px;
-  font-weight: 300;
-  color: var(--mid);
-  line-height: 1.8;
-}
-.voorwaarden-meta strong { font-weight: 500; color: var(--ink); }
-.artikel-nr {
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--light);
-  margin-bottom: 6px;
-}
-.definitie-term {
-  font-weight: 500;
-  color: var(--ink);
-}
-.voorwaarden-updated {
-  font-size: 13px;
-  color: var(--light);
-  margin-top: 64px;
-  padding-top: 24px;
-  border-top: 1px solid rgba(0,0,0,0.08);
-}
-@media (max-width: 960px) {
-  .voorwaarden-body { padding: 60px 24px 80px; }
-}
-</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -120,7 +28,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
 <nav id="nav">
-  <div class="nav-logo"><a href="/"><img src="/logo_zwart.png" alt="Bureau DNK"></a></div>
+  <a href="/" class="wordmark">Bureau DNK<span class="dot">.</span></a>
   <ul class="nav-links">
     <li><a href="/">Home</a></li>
     <li><a href="/over">Over</a></li>
@@ -322,7 +230,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <footer>
-  <img src="/logo_zwart.png" alt="Bureau DNK">
+  <div class="footer-word">Bureau DNK<span class="dot">.</span></div>
   <div class="footer-center">Bureau DNK — De Nieuwe Kamer B.V. · Rotterdam</div>
   <nav class="footer-nav">
     <a href="/fractional-cco">Fractional CCO</a>

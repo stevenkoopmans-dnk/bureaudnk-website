@@ -16,9 +16,12 @@
 <meta name="twitter:image" content="https://bureaudnk.nl/og-image.png">
 <meta name="twitter:title" content="Sales structuur & organisatie — Bureau DNK">
 <meta name="twitter:description" content="Een werkend commercieel proces inrichten dat niet afhankelijk is van één persoon. Bureau DNK bouwt sales structuur voor digital agencies en scale-ups.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Instrument+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;1,6..96,400;1,6..96,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Instrument+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
 <script src="/main.js" defer></script>
 <!-- Google Tag Manager -->
@@ -28,57 +31,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-5SL2MLZ4');</script>
 <!-- End Google Tag Manager -->
-<style>
-.dienst-body {
-  padding: 80px 64px 120px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  border-bottom: 1px solid rgba(0,0,0,0.08);
-}
-.dienst-content h3 {
-  font-family: var(--serif); font-size: clamp(24px, 2vw, 32px);
-  font-weight: 400; margin-bottom: 16px; margin-top: 48px;
-  letter-spacing: -0.01em;
-}
-.dienst-content h3:first-child { margin-top: 0; }
-.dienst-content p {
-  font-size: 16px; font-weight: 300; color: var(--mid);
-  line-height: 1.85; margin-bottom: 16px;
-}
-.dienst-content p strong { font-weight: 500; color: var(--ink); }
-.dienst-meta { position: sticky; top: 120px; align-self: start; }
-.meta-label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--light); margin-bottom: 8px; }
-.meta-value { font-size: 15px; font-weight: 300; color: var(--mid); line-height: 1.7; margin-bottom: 32px; }
-
-.werkwijze { padding: 100px 64px; border-bottom: 1px solid rgba(0,0,0,0.08); }
-.werkwijze-header { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 64px; }
-.werkwijze-header h2 { font-family: var(--serif); font-size: clamp(32px, 3vw, 44px); font-weight: 400; line-height: 1.2; letter-spacing: -0.01em; }
-.werkwijze-header p { font-size: 16px; font-weight: 300; color: var(--mid); line-height: 1.85; align-self: end; }
-.werkwijze-stappen { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: rgba(0,0,0,0.08); }
-.stap { padding: 48px 40px; background: var(--paper); }
-.stap-nr { font-size: 48px; font-family: var(--serif); font-weight: 400; color: rgba(0,0,0,0.06); line-height: 1; margin-bottom: 24px; letter-spacing: -0.02em; }
-.stap-title { font-family: var(--serif); font-size: 22px; font-weight: 400; margin-bottom: 14px; letter-spacing: -0.01em; }
-.stap-text { font-size: 14px; font-weight: 300; color: var(--mid); line-height: 1.75; }
-
-.voor-wie { background: var(--warm); padding: 100px 64px; }
-.voor-wie-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: rgba(0,0,0,0.08); margin-top: 56px; }
-.voor-wie-item { padding: 40px 32px; background: var(--warm); transition: background .3s; }
-.voor-wie-item:hover { background: var(--warmer); }
-.voor-wie-nr { font-size: 11px; letter-spacing: 0.14em; color: var(--light); margin-bottom: 12px; }
-.voor-wie-title { font-family: var(--serif); font-size: 20px; font-weight: 400; margin-bottom: 10px; }
-.voor-wie-text { font-size: 14px; font-weight: 300; color: var(--mid); line-height: 1.65; }
-
-@media (max-width: 960px) {
-  .dienst-body { grid-template-columns: 1fr; gap: 48px; padding: 60px 24px 80px; }
-  .dienst-meta { position: static; }
-  .werkwijze { padding: 80px 24px; }
-  .werkwijze-header { grid-template-columns: 1fr; gap: 24px; }
-  .werkwijze-stappen { grid-template-columns: 1fr; }
-  .voor-wie { padding: 80px 24px; }
-  .voor-wie-grid { grid-template-columns: 1fr; }
-}
-</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -87,7 +39,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
 <nav id="nav">
-  <div class="nav-logo"><a href="/"><img src="/logo_zwart.png" alt="Bureau DNK"></a></div>
+  <a href="/" class="wordmark">Bureau DNK<span class="dot">.</span></a>
   <ul class="nav-links">
     <li><a href="/">Home</a></li>
     <li><a href="/over">Over</a></li>
@@ -185,7 +137,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <footer>
-  <img src="/logo_zwart.png" alt="Bureau DNK">
+  <div class="footer-word">Bureau DNK<span class="dot">.</span></div>
   <div class="footer-center">Bureau DNK — De Nieuwe Kamer B.V. · Rotterdam</div>
   <nav class="footer-nav">
     <a href="/fractional-cco">Fractional CCO</a>
