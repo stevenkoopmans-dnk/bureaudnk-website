@@ -17,7 +17,7 @@ Dit is de korte oriëntatie. De volledige documentatie staat in [docs/](docs/) e
 4. [docs/conventions.md](docs/conventions.md), HTML/CSS/JS-stijl, lokaal testen, branchewerk
 5. [docs/design-system.md](docs/design-system.md), kleuren, type, spacing, nav-gedrag, page-scoped overrides
 6. [docs/api-rules.md](docs/api-rules.md), Formspree-endpoint, GTM, externe diensten
-7. [docs/bedrijfsgegevens.md](docs/bedrijfsgegevens.md), BV-, DGA- en arbeidsrelatiegegevens (De Nieuwe Kamer B.V.)
+7. BV-, DGA- en arbeidsrelatiegegevens staan **niet meer in deze repo** (waren vertrouwelijk en deploybaar). Verplaatst naar `../DNK-Legal/bedrijfsgegevens.md`. Deze repo (DNK Site) bevat alleen publiek deploybare websitebestanden.
 
 Voor terugkerend werk gebruik je een template uit [prompts/](prompts/), zoals `prompts/new-feature.md`, `prompts/bug-fix.md`, `prompts/copy-update.md`, `prompts/new-service-page.md`, `prompts/deploy-check.md`.
 
