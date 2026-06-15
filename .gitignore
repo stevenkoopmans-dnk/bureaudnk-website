@@ -11,3 +11,10 @@ docs/bedrijfsgegevens.md
 
 # Lokale dev-server (alleen voor lokaal testen)
 serve.py
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
