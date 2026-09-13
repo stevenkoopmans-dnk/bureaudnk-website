@@ -37,17 +37,19 @@
 
 ## Lokale dev en verificatie
 
-Twee opties om lokaal te draaien:
+Gebruik `serve.py`, niet de kale `http.server`. `serve.py` mapt schone URLs (`/over` naar `/over.html`) net als Cloudflare Pages, zodat de site lokaal klikbaar is:
 
 ```bash
-cd /Users/stevenkoopmans/claude-projects/bureaudnk
-python3 -m http.server 3456
+cd /Users/stevenkoopmans/claude-projects/DNK-website
+python3 serve.py
 # open http://localhost:3456
 ```
 
-Of via Claude Preview (`mcp__Claude_Preview__preview_start name=bureaudnk`). De launch-config staat in `.claude/launch.json`.
+Of via de preview-tool met de launch-config in `.claude/launch.json` (naam: `dnk-dev`, poort 3456). `serve.py` staat in `.gitignore` (lokaal-only, niet deployen).
 
-**Cache-gotcha:** bij lokaal testen na een CSS-edit cachet de browser de oude `style.css`. Hard reload (cmd-shift-R) of via dev-tools cache-bust. In Claude Preview gebruik je `?cb=Date.now()` op de stylesheet href om verse versie te forceren. Zonder cache-bust krijg je misleidende screenshots.
+**404 lokaal:** `serve.py` serveert bij een niet-bestaande route de kale server-404, niet onze `404.html`. Om de eigen 404 te bekijken open je `http://localhost:3456/404.html` direct. Op Cloudflare Pages wordt `404.html` wél automatisch bij ontbrekende routes getoond.
+
+**Cache-gotcha:** bij lokaal testen na een CSS-edit cachet de browser de oude `style.css`. Hard reload (cmd-shift-R) of via dev-tools cache-bust. In de preview gebruik je `?cb=Date.now()` op de stylesheet href om verse versie te forceren. Zonder cache-bust krijg je misleidende screenshots.
 
 **Wat te testen voor je commit:**
 - Mobiel (375 breed) én desktop (1280+)

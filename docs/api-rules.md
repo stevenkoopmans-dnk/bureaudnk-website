@@ -32,10 +32,19 @@ Eén externe form-service plus drie externe afhankelijkheden. Klein oppervlak, h
 - **Container:** `GTM-5SL2MLZ4`
 - Staat op alle pagina's, ook orphan-pagina's. Verwijder niet zonder Steve's akkoord
 - GA4 en eventuele toekomstige tags lopen via deze container. Niets direct in de HTML
+- **Consent Mode is actief.** Voor de GTM-snippet staat op elke pagina een inline snippet die alle consent-categorieën op `denied` zet (default). Analytics vuurt dus pas na akkoord. Bij het toevoegen van marketing/ads-tags in GTM: respecteer de consent-signalen, zet niets op "altijd vuren"
+
+### Cookiemelding (consent)
+
+- **Banner:** gebouwd in `main.js` (functie draait op elke pagina), styling in `style.css` onder `── COOKIEMELDING ──`. Geen externe cookie-tool
+- **Mechaniek:** Google Consent Mode v2. Inline snippet in de `<head>` (vóór GTM) zet default `analytics_storage: denied`. Bij "Accepteren" roept `main.js` `gtag('consent','update',{analytics_storage:'granted'})` aan en slaat de keuze op in `localStorage` (`dnk-consent` = `granted`/`denied`)
+- **Onthouden:** zolang `dnk-consent` bestaat verschijnt de banner niet opnieuw en wordt de keuze bij paginaload direct hersteld (in de inline head-snippet). Wissen = `localStorage.removeItem('dnk-consent')`
+- **Bij nieuwe pagina's:** neem zowel de inline consent-default-snippet (vóór GTM) als `main.js` mee, anders draait analytics zonder toestemming of verschijnt de banner niet
+- De privacyverklaring (`/privacy`) beschrijft het gebruik; de banner linkt ernaar
 
 ### Google Fonts
 
-- `Cormorant Garamond` (koppen) en `Instrument Sans` (body)
+- `Bodoni Moda` (display/wordmark), `Newsreader` (leesbare serif-koppen), `Instrument Sans` (body)
 - Via `<link rel="stylesheet" href="https://fonts.googleapis.com/css2?...">`
 - `preconnect` op `fonts.googleapis.com` en `fonts.gstatic.com` voor laadsnelheid
 
