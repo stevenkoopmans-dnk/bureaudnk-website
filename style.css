@@ -428,3 +428,55 @@ body.contact .nav-links a { color: var(--dark-c); }
 
   .legal-body, .privacy-body, .voorwaarden-body { padding: 120px 22px 80px; }
 }
+
+/* ── COOKIEMELDING ── */
+.cookie-bar {
+  position: fixed; z-index: 200;
+  left: 24px; right: 24px; bottom: 24px;
+  max-width: 620px; margin-inline: auto;
+  background: var(--dark); color: var(--dark-c);
+  border: 1px solid var(--dark-f); border-radius: 14px;
+  padding: 20px 24px;
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+  box-shadow: 0 18px 50px rgba(21,18,13,0.28);
+  opacity: 0; transform: translateY(16px);
+  transition: opacity .4s var(--ease), transform .4s var(--ease);
+}
+.cookie-bar.in { opacity: 1; transform: translateY(0); }
+.cookie-text {
+  flex: 1 1 260px; margin: 0;
+  font-family: var(--sans); font-size: 13.5px; font-weight: 300;
+  line-height: 1.6; color: var(--dark-d);
+}
+.cookie-text a { color: var(--dark-c); text-decoration: underline; text-underline-offset: 2px; }
+.cookie-actions { display: flex; gap: 10px; flex-shrink: 0; }
+.cookie-btn {
+  font-family: var(--sans); font-size: 12px; font-weight: 500;
+  letter-spacing: 0.02em; padding: 11px 20px; border-radius: 8px;
+  cursor: pointer; border: 1px solid transparent; transition: opacity .2s, background .2s;
+}
+.cookie-decline {
+  background: transparent; color: var(--dark-d); border-color: var(--dark-f);
+}
+.cookie-decline:hover { color: var(--dark-c); }
+.cookie-accept { background: var(--flash); color: #fff; }
+.cookie-accept:hover { background: var(--flash-d); }
+@media (max-width: 560px) {
+  .cookie-bar { left: 12px; right: 12px; bottom: 12px; padding: 18px; }
+  .cookie-actions { width: 100%; }
+  .cookie-btn { flex: 1; }
+}
+
+/* ── 404 ── */
+.error-section {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  padding: 160px 24px 100px; background: var(--paper);
+}
+.error-inner { max-width: 640px; }
+.error-inner .label { justify-content: flex-start; margin-bottom: 26px; }
+.error-inner .display-lg { margin-bottom: 26px; }
+.error-sub {
+  font-family: var(--sans); font-size: 17px; font-weight: 300;
+  color: var(--ink-d); line-height: 1.7; max-width: 460px; margin-bottom: 40px;
+}
+.error-actions { display: flex; gap: 16px; flex-wrap: wrap; }

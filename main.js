@@ -6,6 +6,46 @@
 
 const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+/* Cookiemelding: analytics vuurt pas na akkoord (Google Consent Mode) */
+(function () {
+  function store(v) { try { localStorage.setItem('dnk-consent', v); } catch (e) {} }
+  function read() { try { return localStorage.getItem('dnk-consent'); } catch (e) { return null; } }
+  function gtagUpdate(granted) {
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('consent', 'update', { 'analytics_storage': granted ? 'granted' : 'denied' });
+  }
+  if (read()) return; // keuze al gemaakt
+
+  function build() {
+    const bar = document.createElement('div');
+    bar.className = 'cookie-bar';
+    bar.setAttribute('role', 'dialog');
+    bar.setAttribute('aria-label', 'Cookiemelding');
+    bar.innerHTML =
+      '<p class="cookie-text">Deze site gebruikt anonieme analytische cookies om te zien hoe de site wordt gebruikt. ' +
+      'Meer weten? Lees de <a href="/privacy">privacyverklaring</a>.</p>' +
+      '<div class="cookie-actions">' +
+      '<button type="button" class="cookie-btn cookie-decline">Weigeren</button>' +
+      '<button type="button" class="cookie-btn cookie-accept">Accepteren</button>' +
+      '</div>';
+    document.body.appendChild(bar);
+    requestAnimationFrame(() => bar.classList.add('in'));
+
+    function close(choice) {
+      store(choice);
+      gtagUpdate(choice === 'granted');
+      bar.classList.remove('in');
+      setTimeout(() => bar.remove(), 400);
+    }
+    bar.querySelector('.cookie-accept').addEventListener('click', () => close('granted'));
+    bar.querySelector('.cookie-decline').addEventListener('click', () => close('denied'));
+  }
+
+  if (document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+
 // Nav: .scrolled na 60px
 const nav = document.getElementById('nav');
 if (nav) {
