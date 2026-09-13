@@ -11,3 +11,7 @@ docs/bedrijfsgegevens.md
 
 # Lokale dev-server (alleen voor lokaal testen)
 serve.py
+
+# Design-concepten en oude assets, niet publiek deployen
+concepten/
+logo_zwart.png
