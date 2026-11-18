@@ -17,8 +17,8 @@ Bekende klassen van problemen in deze codebase:
 - **Te brede selectors:** generieke `nav { ... }` raakte de footer-nav. Hoofdnav-styling moet altijd `nav#nav` scoped zijn
 - **Ontbrekende `id="nav"` op een pagina:** breekt zowel de scoped CSS als de scroll-listener in main.js
 - **Cache:** lokale browser cachet `style.css`, hard reload of `?cb=Date.now()` op de href
-- **Email-routing-conflict:** Cloudflare Email Routing kan niet aan, MX van bureaudnk.nl zijn van Google Workspace. Niet opnieuw proberen
-- **Formspree first-submit verification:** eerste keer ooit krijg je een bevestigingsmail, niet de echte lead. Daarna gewoon
+- **Email-routing-conflict:** Cloudflare Email Routing kan op bureaudnk.nl niet aan, MX van bureaudnk.nl zijn van Google Workspace. Niet opnieuw proberen
+- **Formulier mailt niet:** het formulier post naar `/api/contact`, een aparte Worker (`worker/`). Die deployt niet mee met de site. Check `npx wrangler tail bureaudnk-contact` vanuit `worker/`
 
 Workflow:
 1. `git checkout -b feature/fix-<wat>`

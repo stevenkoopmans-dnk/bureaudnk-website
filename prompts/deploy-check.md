@@ -14,7 +14,7 @@ Productie-test (Steve doet of jij begeleidt):
 5. Console errors (DevTools)
 
 Speciale checks:
-- **Contact form:** vul echte test-data in en submit. Verwacht success-state ("Uw bericht is verstuurd"). Check `steven@bureaudnk.nl` op de lead-mail (eerste keer ooit: eerst Formspree-verificatie bevestigen)
+- **Contact form:** vul echte test-data in en submit. Verwacht success-state ("Uw bericht is verstuurd"). Check `steven@bureaudnk.nl` op de lead-mail. Is `worker/` gewijzigd: eerst de Worker deployen (`cd worker && npx wrangler deploy`)
 - **Nav-gedrag op contact:** teal balk, wit logo, cream menu-items en cream CTA-knop. Bij scroll: blijft teal, krijgt subtiele border-bottom
 - **Footer-nav:** moet onderaan staan, niet als spookmenu bovenin (regressie-check op de nav-scope-fix)
 

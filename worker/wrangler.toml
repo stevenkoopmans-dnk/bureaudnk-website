@@ -1,0 +1,51 @@
+# Mail-Worker voor het contactformulier van bureaudnk.nl.
+# Staat los van de site (Worker "bureaudnk-website"). Deployen vanuit deze map:
+#   live:     npx wrangler deploy
+#   preview:  npx wrangler deploy --env preview
+name = "bureaudnk-contact"
+main = "index.js"
+compatibility_date = "2025-09-01"
+workers_dev = false
+
+# Alleen dit ene pad op het eigen domein. De rest van bureaudnk.nl blijft bij de site.
+routes = [
+  { pattern = "bureaudnk.nl/api/contact", zone_name = "bureaudnk.nl" },
+]
+
+# Mail versturen via Cloudflare Email Routing.
+# Voorwaarde: Email Routing staat aan op het domein van CONTACT_FROM (administratiekantoordnk.nl)
+# en CONTACT_TO is daar een geverifieerd bestemmingsadres. Op bureaudnk.nl zelf blijft Email Routing uit.
+[[send_email]]
+name = "MAIL"
+destination_address = "steven@bureaudnk.nl"
+
+[vars]
+CONTACT_TO = "steven@bureaudnk.nl"
+CONTACT_FROM = "website@administratiekantoordnk.nl"
+ALLOWED_ORIGINS = "https://bureaudnk.nl"
+
+# Spambescherming: max 5 berichten per minuut per IP
+[[ratelimits]]
+name = "CONTACT_LIMIT"
+namespace_id = "1002"
+simple = { limit = 5, period = 60 }
+
+# Preview op workers.dev, om te testen voordat de route op bureaudnk.nl live gaat.
+[env.preview]
+name = "bureaudnk-contact-preview"
+workers_dev = true
+routes = []
+
+[[env.preview.send_email]]
+name = "MAIL"
+destination_address = "steven@bureaudnk.nl"
+
+[env.preview.vars]
+CONTACT_TO = "steven@bureaudnk.nl"
+CONTACT_FROM = "website@administratiekantoordnk.nl"
+ALLOWED_ORIGINS = "http://localhost:3456"
+
+[[env.preview.ratelimits]]
+name = "CONTACT_LIMIT"
+namespace_id = "1003"
+simple = { limit = 5, period = 60 }

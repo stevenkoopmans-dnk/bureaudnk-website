@@ -17,9 +17,9 @@ Regels die niet uit de code af te leiden zijn. Wanneer code en deze regels confl
 
 ## Leads-endpoint
 
-- Lead-mails gaan via `POST https://formspree.io/f/meervzby` → Formspree → Steve's Gmail op `steven@bureaudnk.nl`
+- Lead-mails gaan via `POST /api/contact` → eigen Cloudflare Worker → Steve's Gmail op `steven@bureaudnk.nl`
 - Geen CRM-koppeling op deze site. Leads landen in Steve's inbox en gaan van daar handmatig in Pipedrive of vergelijkbaar
-- Test na elke deploy die `contact.html` raakt: stuur een testbericht via productie en bevestig ontvangst (eerste keer ooit eerst de Formspree-verificatiemail bevestigen)
+- Test na elke deploy die `contact.html` raakt: stuur een testbericht via productie en bevestig ontvangst
 
 Zie ook [api-rules.md](api-rules.md) voor de technische kant.
 

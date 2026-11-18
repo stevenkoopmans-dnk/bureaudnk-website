@@ -1,29 +1,34 @@
 # API-rules — Bureau DNK
 
-Eén externe form-service plus drie externe afhankelijkheden. Klein oppervlak, houd het zo.
+Eigen formulier-endpoint plus drie externe afhankelijkheden. Klein oppervlak, houd het zo.
 
-## Contactformulier: Formspree
+## Contactformulier: eigen Worker
 
-- **Endpoint:** `https://formspree.io/f/meervzby`
-- **Method:** POST
-- **Body:** `FormData` (multipart) of JSON
-- **Header:** `Accept: application/json` zodat je een JSON-response krijgt in plaats van een redirect (nodig voor de fetch-based UX)
-- **Velden in het form:**
+- **Endpoint:** `POST /api/contact` (zelfde domein, dus geen CORS nodig op productie)
+- **Worker:** `bureaudnk-contact`, code en config in [worker/](../worker/). Route: `bureaudnk.nl/api/contact`
+- **Body:** `FormData` of JSON
+- **Velden:**
   - `naam` (verplicht)
-  - `bedrijf` (verplicht)
   - `telefoon` (verplicht)
-  - `bericht` (verplicht)
-  - `_subject` (hidden, vaste waarde: "Nieuw bericht via bureaudnk.nl")
-  - `_gotcha` (hidden honeypot, leeg houden; bots vullen dit, Formspree dropt)
+  - `bedrijf` en `bericht` (in het formulier verplicht, de Worker eist ze niet)
+  - `_gotcha` (hidden honeypot, leeg houden)
+  - `t` (milliseconden sinds het laden van de pagina, door het script toegevoegd)
 
-**Response-shape (success):** `{ ok: true, ... }` met status 200.
-**Response-shape (validation error):** `{ errors: [{ field, message, code }, ...] }` met status 422.
+**Responses:**
+- `200 { ok: true }`: verstuurd. Ook bij spam (honeypot gevuld of binnen 2,5 seconde verstuurd), maar dan wordt er niets gemaild
+- `403`: de `Origin` is niet `https://bureaudnk.nl`
+- `422`: naam of telefoon ontbreekt
+- `429`: meer dan 5 berichten per minuut vanaf hetzelfde IP
+- `502`: mail versturen mislukt
 
-**Eerste-keer-bevestiging:** Formspree stuurt bij de allereerste submission een verificatiemail naar het inbox-adres (`steven@bureaudnk.nl`). Klik die link voordat echte leads doorkomen. Daarna gaat het normaal.
+**Mail:** naar `steven@bureaudnk.nl`, afzender `website@administratiekantoordnk.nl`, via Cloudflare Email Routing op administratiekantoordnk.nl. Waarom dat domein: zie [architecture.md](architecture.md), sectie "E-mail en het contactformulier".
 
-**Free-tier limiet:** 50 submissions per maand. Voor Bureau DNK ruim genoeg.
+**Meting:** na een geslaagde verzending pusht het script `{ event: 'generate_lead', form_id: 'contact' }` naar de `dataLayer`. Een GA4-event daarop richt je in GTM in.
 
-**Account en dashboard:** formspree.io, login als Steve. Form-name "Bureau DNK contact" of vergelijkbaar. Hier zie je ook de submission-history en kun je het ontvangstadres wijzigen zonder dat de code aangepast hoeft te worden.
+**Deployen en testen van de Worker:**
+- Preview: `cd worker && npx wrangler deploy --env preview` (workers.dev-adres, accepteert alleen `http://localhost:3456` als herkomst)
+- Live: `cd worker && npx wrangler deploy`
+- Een push naar `main` deployt alleen de site, niet de Worker
 
 ## Externe diensten
 
@@ -62,15 +67,13 @@ Eén externe form-service plus drie externe afhankelijkheden. Klein oppervlak, h
 ## Regels voor toekomstige integraties
 
 - **Geen tracking pixels direct in HTML.** Alles via GTM
-- **Geen client-side API-keys.** Als iets een key nodig heeft die de browser nooit mag zien, hoort het in een Pages Function. Houd die Function minimaal
-- **Geen externe form-providers naast Formspree** tenzij Steve er expliciet om vraagt. Eén form is genoeg
+- **Geen client-side API-keys.** Als iets een key nodig heeft die de browser nooit mag zien, hoort het in de Worker. Houd die minimaal
+- **Geen externe form-providers** tenzij Steve er expliciet om vraagt. Formspree is er in november 2026 bewust uitgehaald
 - **Calendly of vergelijkbaar:** mag als secundair conversiepad, achter de "Plan gesprek" CTA. Het formulier blijft primair
-- **CORS:** Formspree's endpoint accepteert cross-origin POST vanaf bureaudnk.nl. Geen verdere config nodig
-- **Rate-limiting:** Formspree handelt dit af. Niet zelf opnieuw bouwen
-- **Spam:** honeypot `_gotcha` is genoeg voor het huidige volume. Als spam komt, eerst monitoren, dan eventueel ReCAPTCHA in de Formspree-config zetten (dashboard-only, geen code-wijziging)
+- **Rate-limiting:** zit in de Worker (5 per minuut per IP)
+- **Spam:** honeypot `_gotcha`, tijdscheck en herkomstcheck. Als er toch spam komt: eerst monitoren, dan Cloudflare Turnstile overwegen
 
-## Wat we expliciet niet meer doen
+## Wat we expliciet niet doen
 
-- Geen eigen Cloudflare Pages Function voor mail. De oude `functions/contact.js` is bewust verwijderd. Zie [architecture.md](architecture.md) sectie "E-mail en het contactformulier" voor de reden
-- Geen `env.EMAIL.send()` via Cloudflare Workers Email. Vereist Email Routing op DNS-niveau, conflicteert met Google Workspace MX
-- Geen Formspree premium-features zonder Steve's akkoord (kost geld, voegt voor dit volume niets toe)
+- Geen Email Routing op bureaudnk.nl zelf. Conflicteert met de Google Workspace-MX. De Worker verstuurt daarom via administratiekantoordnk.nl
+- De oude Pages Function `functions/contact.js` niet terugzetten
