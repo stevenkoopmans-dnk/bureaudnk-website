@@ -2,7 +2,7 @@
 
 Repo voor [bureaudnk.nl](https://bureaudnk.nl), de site van Bureau DNK (eigenaar Steven Koopmans, De Nieuwe Kamer B.V., Rotterdam).
 
-Statische site. Vanilla HTML/CSS/JS. Hosting op Cloudflare Pages. Contactformulier loopt via Formspree.
+Statische site. Vanilla HTML/CSS/JS. Hosting op Cloudflare. Contactformulier loopt via een eigen Cloudflare Worker (map `worker/`).
 
 ## Snel aan de slag
 
@@ -24,7 +24,7 @@ Lees in deze volgorde, ook als Claude:
 3. [docs/architecture.md](docs/architecture.md), structuur, hosting, deploy, git-workflow
 4. [docs/conventions.md](docs/conventions.md), HTML/CSS/JS-stijl, lokaal testen, branchewerk
 5. [docs/design-system.md](docs/design-system.md), kleuren, type, spacing, nav-gedrag, page-scoped overrides
-6. [docs/api-rules.md](docs/api-rules.md), Formspree-endpoint, GTM, externe diensten
+6. [docs/api-rules.md](docs/api-rules.md), formulier-endpoint, GTM, externe diensten
 7. [prompts/](prompts/), herbruikbare sessie-templates per type werk
 
 Voor sessie-context: [CLAUDE.md](CLAUDE.md) in de root staat dat allemaal samen plus de project-specifieke instructies.
@@ -35,7 +35,7 @@ Voor sessie-context: [CLAUDE.md](CLAUDE.md) in de root staat dat allemaal samen 
 |---|---|---|
 | Frontend | Vanilla HTML/CSS/JS | Geen framework, geen build |
 | Hosting | Cloudflare Pages | Push naar main triggert deploy |
-| Contactformulier | Formspree (form-id `meervzby`) | Mailt door naar `steven@bureaudnk.nl` |
+| Contactformulier | Worker `bureaudnk-contact` op `/api/contact` | Mailt naar `steven@bureaudnk.nl`, apart deployen vanuit `worker/` |
 | Inkomende mail | Google Workspace | MX niet aanraken |
 | Analytics | Google Tag Manager (`GTM-5SL2MLZ4`) | |
 

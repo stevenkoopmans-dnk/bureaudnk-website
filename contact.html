@@ -85,8 +85,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="contact-right">
     <h2 class="form-title reveal">Stuur een bericht</h2>
     <div id="form-feedback" class="form-feedback" role="alert"></div>
-    <form id="contact-form" action="https://formspree.io/f/meervzby" method="POST">
-      <input type="hidden" name="_subject" value="Nieuw bericht via bureaudnk.nl">
+    <form id="contact-form" action="/api/contact" method="POST">
       <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="form-row">
         <div class="form-group reveal">
@@ -126,18 +125,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 
 <script>
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((e, i) => {
-    if (e.isIntersecting) {
-      setTimeout(() => e.target.classList.add('visible'), (i % 4) * 80);
-      observer.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
+// De opbouw-animatie (.reveal) zit in main.js. Hier alleen het formulier.
 const feedback = document.getElementById('form-feedback');
 const form = document.getElementById('contact-form');
+const geladen = Date.now();
 
 form.addEventListener('submit', async function(e) {
   e.preventDefault();
@@ -149,20 +140,26 @@ form.addEventListener('submit', async function(e) {
   feedback.textContent = '';
 
   try {
+    // Tijd sinds het laden gaat mee: de Worker negeert berichten die binnen 2,5 seconde komen (bots)
+    const data = new FormData(this);
+    data.append('t', Date.now() - geladen);
     const res = await fetch(this.action, {
       method: 'POST',
-      body: new FormData(this),
+      body: data,
       headers: { 'Accept': 'application/json' }
     });
     if (res.ok) {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'generate_lead', form_id: 'contact' });
       feedback.className = 'form-feedback success';
       feedback.textContent = 'Uw bericht is verstuurd. We nemen zo snel mogelijk contact op.';
       this.reset();
       this.style.display = 'none';
     } else {
-      const data = await res.json().catch(() => ({}));
       feedback.className = 'form-feedback error';
-      feedback.textContent = data.errors?.map(e => e.message).join(' ') || 'Er ging iets mis. Probeer het later opnieuw.';
+      feedback.textContent = res.status === 422 ? 'Vul uw naam en telefoonnummer in.'
+        : res.status === 429 ? 'Te veel berichten achter elkaar. Probeer het over een minuut opnieuw.'
+        : 'Er ging iets mis. Probeer het later opnieuw of bel even.';
       btn.textContent = original;
       btn.disabled = false;
     }
