@@ -305,6 +305,8 @@ footer {
 .about-content p { font-size: 16px; font-weight: 300; color: #2e2b28; line-height: 1.85; margin-bottom: 20px; }
 .about-content p strong { font-weight: 500; color: var(--ink); }
 .about-content p em { font-style: italic; }
+.about-content p a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.about-content p a:hover { color: var(--flash); }
 .divider { border: none; border-top: 1px solid var(--ink-f); margin: 0 56px; }
 
 .values { padding: 120px 56px; background: var(--paper-2); }
